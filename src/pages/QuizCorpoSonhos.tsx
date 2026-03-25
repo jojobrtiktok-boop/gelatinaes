@@ -2,12 +2,13 @@ import QuizSingleSelect from "@/components/QuizSingleSelect";
 
 const QuizCorpoSonhos = () => (
   <QuizSingleSelect
-    progress={85}
-    title="Qual o corpo dos seus sonhos?"
-    subtitle="Escolha sua meta."
+    progress={97}
+    title="Você se compromete a aplicar o protocolo por pelo menos 1 semana para poder ver os resultados?"
+    subtitle="PARA LIBERAR SEU PLANO, PRECISO SABER:"
     options={[
-      { label: "Em forma e definida", emoji: "💪" },
-      { label: "Natural e saudável", emoji: "🌿" },
+      { label: "Sim me comprometo!", emoji: "😊" },
+      { label: "Quero começar hoje", emoji: "😊" },
+      { label: "Não sei...", emoji: "😐" },
     ]}
     nextRoute="/quiz/22"
   />
