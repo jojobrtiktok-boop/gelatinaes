@@ -56,7 +56,10 @@ const QuizPesoDesejado = () => {
       <Button
         size="lg"
         className="w-full text-base font-semibold py-6 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] hover:opacity-90 transition-opacity"
-        onClick={() => navigate("/quiz/14")}
+        onClick={() => {
+          localStorage.setItem("quiz_peso_desejado", String(peso));
+          navigate("/quiz/14");
+        }}
       >
         Continuar
       </Button>
