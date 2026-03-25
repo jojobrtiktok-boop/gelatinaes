@@ -7,6 +7,9 @@ const QuizTransformacao = () => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    const isDevNav = localStorage.getItem("devnav") === "1";
+    if (isDevNav) return;
+
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 80) {

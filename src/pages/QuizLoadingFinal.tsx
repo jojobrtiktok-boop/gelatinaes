@@ -38,8 +38,10 @@ const QuizLoadingFinal = () => {
       if (pct >= 100) clearInterval(progressInterval);
     }, 80);
 
-    // Navigate when done
-    timers.push(setTimeout(() => navigate("/quiz/25"), NAVIGATE_DELAY_MS));
+    // Navigate when done (skip if using DevNav)
+    if (localStorage.getItem("devnav") !== "1") {
+      timers.push(setTimeout(() => navigate("/quiz/25"), NAVIGATE_DELAY_MS));
+    }
 
     return () => {
       timers.forEach(clearTimeout);

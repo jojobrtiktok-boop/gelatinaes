@@ -41,6 +41,16 @@ const DevNav = () => {
   const hasPrev = currentIndex > 0;
   const hasNext = currentIndex < ROUTES.length - 1 && currentIndex !== -1;
 
+  const goTo = (route: string) => {
+    localStorage.setItem("devnav", "1");
+    navigate(route);
+  };
+
+  const resetDevNav = () => {
+    localStorage.removeItem("devnav");
+    navigate("/");
+  };
+
   return (
     <div
       style={{
@@ -62,7 +72,7 @@ const DevNav = () => {
       }}
     >
       <button
-        onClick={() => hasPrev && navigate(ROUTES[currentIndex - 1])}
+        onClick={() => hasPrev && goTo(ROUTES[currentIndex - 1])}
         disabled={!hasPrev}
         style={{
           background: "none",
@@ -77,12 +87,16 @@ const DevNav = () => {
         ◀
       </button>
 
-      <span style={{ color: "#aaa" }}>
+      <span
+        style={{ color: "#aaa", cursor: "pointer" }}
+        title="Clique para reiniciar do início"
+        onClick={resetDevNav}
+      >
         {currentIndex === -1 ? location.pathname : `${currentIndex + 1}/${ROUTES.length}`}
       </span>
 
       <button
-        onClick={() => hasNext && navigate(ROUTES[currentIndex + 1])}
+        onClick={() => hasNext && goTo(ROUTES[currentIndex + 1])}
         disabled={!hasNext}
         style={{
           background: "none",
