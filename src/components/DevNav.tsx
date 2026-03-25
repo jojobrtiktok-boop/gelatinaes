@@ -1,8 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
 const ROUTES = [
-  "/",
-  "/quiz",
   "/quiz/1",
   "/quiz/2",
   "/quiz/3",
