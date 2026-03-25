@@ -12,7 +12,7 @@ const QuizAltura = () => {
   };
 
   return (
-    <QuizLayout progress={46}>
+    <QuizLayout progress={96}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
         Qual é sua altura?
       </h1>

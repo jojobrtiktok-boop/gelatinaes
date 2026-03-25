@@ -6,10 +6,10 @@ import QuizLayout from "@/components/QuizLayout";
 const options = [
   { label: "Ter mais energia", emoji: "⚡" },
   { label: "Usar roupas que amo", emoji: "👗" },
-  { label: "Melhorar autoestima", emoji: "💖" },
+  { label: "Melhorar autoestima", emoji: "❤️" },
   { label: "Ter mais saúde", emoji: "💪" },
   { label: "Me sentir mais leve", emoji: "🦋" },
-  { label: "Receber elogios", emoji: "🌟" },
+  { label: "Receber elogios", emoji: "⭐" },
 ];
 
 const QuizGoals = () => {
@@ -20,6 +20,11 @@ const QuizGoals = () => {
     setSelected((prev) =>
       prev.includes(label) ? prev.filter((l) => l !== label) : [...prev, label]
     );
+  };
+
+  const handleContinue = () => {
+    localStorage.setItem("goals", JSON.stringify(selected));
+    navigate("/quiz/10");
   };
 
   return (
@@ -57,8 +62,9 @@ const QuizGoals = () => {
 
       <Button
         size="lg"
-        className="w-full text-base font-semibold py-6 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] hover:opacity-90 transition-opacity"
-        onClick={() => navigate("/quiz/10")}
+        disabled={selected.length === 0}
+        className="w-full text-base font-semibold py-6 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] hover:opacity-90 transition-opacity disabled:opacity-50"
+        onClick={handleContinue}
       >
         Continuar
       </Button>

@@ -1,48 +1,92 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import QuizLayout from "@/components/QuizLayout";
-import gelatinaBowl from "@/assets/gelatina-bowl.png";
 
 const QuizOtimo = () => {
   const navigate = useNavigate();
+  const userName = localStorage.getItem("userName") || "você";
 
   return (
     <QuizLayout progress={92}>
-      <h1 className="text-xl font-bold text-foreground mb-3 text-center">
-        Ótimo, Você! 🎉
+      <h1 className="text-lg font-bold text-foreground mb-1 text-center leading-tight">
+        Ótimo, <span className="text-primary">{userName}</span>! Veja como funciona 🍒
       </h1>
-      <p className="text-muted-foreground text-sm mb-6 text-center leading-relaxed">
-        Sem esforço ou dietas chatas: a Gelatina Mounjaro faz o trabalho pesado por você, ativando a queima de gordura com ingredientes caseiros que você prepara em minutos.
+      <p className="text-muted-foreground text-xs mb-6 text-center leading-relaxed">
+        A Gelatina Mounjaro ativa a queima de gordura natural com ingredientes caseiros que você prepara em minutos.
       </p>
 
-      {/* Card with gelatin image and flow */}
-      <div className="w-full rounded-2xl border border-border p-6 flex flex-col items-center mb-6">
-        <img src={gelatinaBowl} alt="Gelatina Mounjaro" className="w-32 h-32 object-contain mb-4" loading="lazy" decoding="async" />
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <div className="flex flex-col items-center">
-            <span className="text-2xl">👤</span>
-            <span>Você</span>
+      {/* Benefits checklist */}
+      <div className="w-full flex flex-col gap-2 mb-6">
+        <div className="flex items-center gap-3 p-3 rounded-xl border border-border">
+          <span className="text-lg">✅</span>
+          <span className="font-medium text-sm text-foreground">Fácil de preparar</span>
+        </div>
+        <div className="flex items-center gap-3 p-3 rounded-xl border border-border">
+          <span className="text-lg">✅</span>
+          <span className="font-medium text-sm text-foreground">2 vezes ao dia</span>
+        </div>
+        <div className="flex items-center gap-3 p-3 rounded-xl border border-border">
+          <span className="text-lg">✅</span>
+          <span className="font-medium text-sm text-foreground">Receita 100% Natural</span>
+        </div>
+      </div>
+
+      {/* Process timeline */}
+      <div className="w-full rounded-2xl border border-border p-4 mb-6 bg-background/50">
+        <div className="space-y-4">
+          {/* Step 1 */}
+          <div className="flex gap-3">
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">1</div>
+              <div className="w-1 h-8 bg-primary/30"></div>
+            </div>
+            <div>
+              <p className="font-semibold text-sm text-foreground">Antes</p>
+              <p className="text-xs text-muted-foreground">Gordura acumulada e metabolismo lento</p>
+            </div>
           </div>
-          <span>→</span>
-          <div className="flex flex-col items-center">
-            <span className="text-2xl">🍮</span>
-            <span className="font-semibold text-foreground">Gelatina</span>
+
+          {/* Step 2 */}
+          <div className="flex gap-3">
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">2</div>
+              <div className="w-1 h-8 bg-primary/30"></div>
+            </div>
+            <div>
+              <p className="font-semibold text-sm text-primary">Gelatina Mounjaro</p>
+              <p className="text-xs text-muted-foreground">Receita caseira simples e poderosa</p>
+            </div>
           </div>
-          <span>→</span>
-          <div className="flex flex-col items-center">
-            <span className="text-2xl">🌟</span>
-            <span>Seu objetivo</span>
+
+          {/* Step 3 */}
+          <div className="flex gap-3">
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">3</div>
+              <div className="w-1 h-8 bg-primary/30"></div>
+            </div>
+            <div>
+              <p className="font-semibold text-sm text-foreground">Queima natural ativada 🔥</p>
+              <p className="text-xs text-muted-foreground">Metabolismo acelerado sem dietas</p>
+            </div>
+          </div>
+
+          {/* Step 4 */}
+          <div className="flex gap-3">
+            <div className="flex flex-col items-center">
+              <div className="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center text-sm font-bold">✓</div>
+            </div>
+            <div>
+              <p className="font-semibold text-sm text-foreground">Corpo dos sonhos!</p>
+              <p className="text-xs text-muted-foreground">Resultado visível em poucas semanas</p>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Info box */}
-      <div className="w-full rounded-2xl bg-secondary/60 p-4 mb-8">
-        <p className="text-sm text-center">
-          <strong className="text-primary">Como funciona:</strong>{" "}
-          <span className="text-muted-foreground">
-            A receita caseira ativa o GLP-1, o mesmo hormônio que faz o efeito do Mounjaro, mas de forma 100% natural!
-          </span>
+      {/* Green info box */}
+      <div className="w-full rounded-2xl bg-green-50 border border-green-200 p-4 mb-6">
+        <p className="text-xs text-center text-green-900">
+          🧪 <strong>Receita caseira que ativa o GLP-1</strong>, o mesmo hormônio do Mounjaro, de forma <strong>100% natural!</strong>
         </p>
       </div>
 

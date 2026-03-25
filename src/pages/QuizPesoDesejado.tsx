@@ -18,7 +18,7 @@ const QuizPesoDesejado = () => {
   const meta = pesoAtual - peso;
 
   return (
-    <QuizLayout progress={97}>
+    <QuizLayout progress={98}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
         Qual é seu peso desejado?
       </h1>
