@@ -21,7 +21,7 @@ const QuizWeight = () => {
   };
 
   return (
-    <QuizLayout progress={50}>
+    <QuizLayout progress={60}>
       <h1 className="text-lg font-bold text-foreground mb-2 text-center leading-tight">
         <span className="text-primary">{userName}</span>, como o peso afeta sua vida?
       </h1>

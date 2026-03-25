@@ -26,7 +26,7 @@ const QuizBarriers = () => {
   };
 
   return (
-    <QuizLayout progress={60}>
+    <QuizLayout progress={80}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
         O que te impede de emagrecer?
       </h1>

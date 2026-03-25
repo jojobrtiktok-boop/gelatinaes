@@ -6,7 +6,7 @@ const QuizFamosas = () => {
   const navigate = useNavigate();
 
   return (
-    <QuizLayout progress={40}>
+    <QuizLayout progress={45}>
       <h1 className="text-xl font-bold text-foreground mb-2 leading-tight text-center">
         Sim, até as famosas estão usando! ⭐
       </h1>

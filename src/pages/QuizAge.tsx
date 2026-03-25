@@ -19,7 +19,7 @@ const QuizAge = () => {
   };
 
   return (
-    <QuizLayout progress={20}>
+    <QuizLayout progress={15}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">Qual a sua idade?</h1>
       <p className="text-muted-foreground text-sm mb-6 text-center">Selecione sua faixa etária.</p>
 

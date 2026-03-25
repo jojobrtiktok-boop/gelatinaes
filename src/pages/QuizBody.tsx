@@ -23,7 +23,7 @@ const QuizBody = () => {
   };
 
   return (
-    <QuizLayout progress={35}>
+    <QuizLayout progress={25}>
       <h1 className="text-xl font-bold text-foreground mb-1 leading-tight text-center">
         Como você classifica <span className="text-primary">o seu corpo</span>?
       </h1>

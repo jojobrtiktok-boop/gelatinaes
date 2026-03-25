@@ -16,7 +16,7 @@ const QuizName = () => {
   };
 
   return (
-    <QuizLayout progress={45}>
+    <QuizLayout progress={50}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
         Qual é o seu nome?
       </h1>

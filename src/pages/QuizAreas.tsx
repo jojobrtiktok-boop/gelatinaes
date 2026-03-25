@@ -24,7 +24,7 @@ const QuizAreas = () => {
   };
 
   return (
-    <QuizLayout progress={50}>
+    <QuizLayout progress={35}>
       <h1 className="text-xl font-bold text-foreground mb-1 leading-tight text-center">
         Quais as áreas que você mais quer perder gordura?
       </h1>

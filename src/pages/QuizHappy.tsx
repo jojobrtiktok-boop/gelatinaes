@@ -19,7 +19,7 @@ const QuizHappy = () => {
   };
 
   return (
-    <QuizLayout progress={55}>
+    <QuizLayout progress={70}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center leading-tight">
         Você está feliz com <span className="text-primary">sua aparência atual</span>?
       </h1>
