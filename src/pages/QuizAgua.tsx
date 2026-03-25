@@ -2,14 +2,14 @@ import QuizSingleSelect from "@/components/QuizSingleSelect";
 
 const QuizAgua = () => (
   <QuizSingleSelect
-    progress={60}
-    title="Quanta água você bebe por dia?"
-    subtitle="A hidratação acelera resultados."
+    progress={86}
+    title="Quantas horas você dorme por noite?"
+    subtitle="O sono é essencial para o emagrecimento."
     options={[
-      { label: "Quase nada", emoji: "🏜️" },
-      { label: "Menos de 1 litro", emoji: "💧" },
-      { label: "1 a 2 litros", emoji: "🌊" },
-      { label: "Mais de 2 litros", emoji: "🐳" },
+      { label: "Menos de 5 horas", emoji: "😴" },
+      { label: "5 a 7 horas", emoji: "🛏️" },
+      { label: "7 a 9 horas", emoji: "😊" },
+      { label: "Mais de 9 horas", emoji: "🏢" },
     ]}
     nextRoute="/quiz/18"
   />

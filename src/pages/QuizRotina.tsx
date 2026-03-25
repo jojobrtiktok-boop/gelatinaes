@@ -2,14 +2,14 @@ import QuizSingleSelect from "@/components/QuizSingleSelect";
 
 const QuizRotina = () => (
   <QuizSingleSelect
-    progress={45}
-    title="Como é sua rotina diária?"
-    subtitle="Selecione a que mais se encaixa."
+    progress={78}
+    title="Quantas gestações você já teve?"
+    subtitle="Isso ajuda a personalizar seu plano."
     options={[
-      { label: "Trabalho fora de casa", emoji: "🏢" },
-      { label: "Trabalho em home office", emoji: "🏠" },
-      { label: "Cuido da casa/família", emoji: "👨‍👩‍👧" },
-      { label: "Estudo", emoji: "📚" },
+      { label: "Nunca estive grávida", emoji: "⊘" },
+      { label: "1 gestação", emoji: "1️⃣" },
+      { label: "2 gestações", emoji: "2️⃣" },
+      { label: "3 ou mais gestações", emoji: "3️⃣" },
     ]}
     nextRoute="/quiz/16"
   />

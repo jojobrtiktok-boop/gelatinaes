@@ -1,9 +1,30 @@
+import QuizSingleSelect from "@/components/QuizSingleSelect";
+
+const QuizResultado = () => (
+  <QuizSingleSelect
+    progress={90}
+    title="Quanta água você bebe por dia?"
+    subtitle="A hidratação acelera resultados."
+    options={[
+      { label: "Quase nada", emoji: "🚫" },
+      { label: "Menos de 1 litro", emoji: "💧" },
+      { label: "1 a 2 litros", emoji: "💦" },
+      { label: "Mais de 2 litros", emoji: "🌊" },
+    ]}
+    nextRoute="/quiz/19"
+  />
+);
+
+export default QuizResultado;
+
+/*
+// PREVIOUS RESULT PAGE CODE - kept for reference
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import QuizLayout from "@/components/QuizLayout";
 import antesDepois from "@/assets/antes-depois.png";
 
-const QuizResultado = () => {
+const QuizResultadoOld = () => {
   const navigate = useNavigate();
   const pesoAtual = Number(localStorage.getItem("quiz_peso_atual") || "75");
   const alturaCm = Number(localStorage.getItem("quiz_altura") || "165");
