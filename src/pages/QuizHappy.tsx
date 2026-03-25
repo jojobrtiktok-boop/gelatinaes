@@ -3,8 +3,8 @@ import { useState } from "react";
 import QuizLayout from "@/components/QuizLayout";
 
 const options = [
-  { label: "Não estou feliz", emoji: "😟💬" },
-  { label: "Poderia ser melhor", emoji: "😐" },
+  { label: "Não estou feliz", emoji: "😢" },
+  { label: "Poderia ser melhor", emoji: "😊" },
   { label: "Estou trabalhando nisso", emoji: "💪" },
 ];
 
@@ -14,13 +14,14 @@ const QuizHappy = () => {
 
   const handleSelect = (label: string) => {
     setSelected(label);
+    localStorage.setItem("happinessLevel", label);
     setTimeout(() => navigate("/quiz/8"), 400);
   };
 
   return (
-    <QuizLayout progress={75}>
-      <h1 className="text-xl font-bold text-foreground mb-2 text-center">
-        Você está feliz com sua aparência atual?
+    <QuizLayout progress={55}>
+      <h1 className="text-xl font-bold text-foreground mb-2 text-center leading-tight">
+        Você está feliz com <span className="text-primary">sua aparência atual</span>?
       </h1>
       <p className="text-muted-foreground text-sm mb-6 text-center">
         Seja sincera consigo mesma

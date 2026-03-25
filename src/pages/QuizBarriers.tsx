@@ -5,9 +5,9 @@ import QuizLayout from "@/components/QuizLayout";
 
 const options = [
   { label: "Falta de tempo", emoji: "⏰" },
-  { label: "Falta de autocontrole", emoji: "📋" },
+  { label: "Falta de autocontrole", emoji: "🍔" },
   { label: "Questões financeiras", emoji: "💰" },
-  { label: "Falta de constância", emoji: "📉" },
+  { label: "Falta de constância", emoji: "📋" },
 ];
 
 const QuizBarriers = () => {
@@ -20,8 +20,13 @@ const QuizBarriers = () => {
     );
   };
 
+  const handleContinue = () => {
+    localStorage.setItem("barriers", JSON.stringify(selected));
+    navigate("/quiz/9");
+  };
+
   return (
-    <QuizLayout progress={82}>
+    <QuizLayout progress={60}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
         O que te impede de emagrecer?
       </h1>
@@ -55,8 +60,9 @@ const QuizBarriers = () => {
 
       <Button
         size="lg"
-        className="w-full text-base font-semibold py-6 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] hover:opacity-90 transition-opacity"
-        onClick={() => navigate("/quiz/9")}
+        disabled={selected.length === 0}
+        className="w-full text-base font-semibold py-6 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] hover:opacity-90 transition-opacity disabled:opacity-50"
+        onClick={handleContinue}
       >
         Continuar
       </Button>

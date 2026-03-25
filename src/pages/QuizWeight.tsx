@@ -3,25 +3,27 @@ import { useState } from "react";
 import QuizLayout from "@/components/QuizLayout";
 
 const weightOptions = [
-  { label: "Afeta minha autoestima", desc: "Me sinto insegura com meu corpo", emoji: "💖" },
-  { label: "Afeta minha saúde", desc: "Sinto cansaço, dores e falta de energia", emoji: "🏥" },
+  { label: "Afeta minha autoestima", desc: "Me sinto insegura com meu corpo", emoji: "❤️" },
+  { label: "Afeta minha saúde", desc: "Sinto cansaço, dores e falta de energia", emoji: "📱" },
   { label: "Afeta meus relacionamentos", desc: "Evito encontros e situações sociais", emoji: "👥" },
-  { label: "Afeta minha rotina", desc: "Dificuldade em fazer tarefas simples", emoji: "📅" },
+  { label: "Afeta minha rotina", desc: "Dificuldade em fazer tarefas simples", emoji: "📋" },
 ];
 
 const QuizWeight = () => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState<string | null>(null);
+  const userName = localStorage.getItem("userName") || "você";
 
   const handleSelect = (label: string) => {
     setSelected(label);
+    localStorage.setItem("weightImpact", label);
     setTimeout(() => navigate("/quiz/7"), 400);
   };
 
   return (
-    <QuizLayout progress={70}>
-      <h1 className="text-xl font-bold text-foreground mb-2 text-center">
-        Você, como o peso afeta sua vida?
+    <QuizLayout progress={50}>
+      <h1 className="text-lg font-bold text-foreground mb-2 text-center leading-tight">
+        <span className="text-primary">{userName}</span>, como o peso afeta sua vida?
       </h1>
       <p className="text-muted-foreground text-sm mb-6 text-center">
         Entender isso nos ajuda a criar seu protocolo ideal
