@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import logoMounjaro from "@/assets/logo-mounjaro.png";
 import gelatinaBowl from "@/assets/gelatina-bowl.png";
 import garantia from "@/assets/garantia-30dias.png";
@@ -9,7 +9,9 @@ const CHECKOUT_URL = "#"; // Replace with actual checkout URL
 const QuizVSL = () => {
   const [minutes, setMinutes] = useState(15);
   const [seconds, setSeconds] = useState(0);
-  const [showCTA, setShowCTA] = useState(false);
+  const [videoProgress, setVideoProgress] = useState(0);
+  const [isVideoUnlocked, setIsVideoUnlocked] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -24,18 +26,55 @@ const QuizVSL = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Show CTA after 1min30s (90 seconds)
+  // Track video progress
   useEffect(() => {
-    const delay = setTimeout(() => setShowCTA(true), 90000);
-    return () => clearTimeout(delay);
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleTimeUpdate = () => {
+      const progress = (video.currentTime / video.duration) * 100;
+      setVideoProgress(Math.min(progress, 100));
+
+      // Unlock button when video reaches 100%
+      if (progress >= 99) {
+        setIsVideoUnlocked(true);
+      }
+    };
+
+    const handlePlay = () => {
+      // Video started playing
+    };
+
+    video.addEventListener("timeupdate", handleTimeUpdate);
+    video.addEventListener("play", handlePlay);
+
+    return () => {
+      video.removeEventListener("timeupdate", handleTimeUpdate);
+      video.removeEventListener("play", handlePlay);
+    };
   }, []);
 
-  const CTA = () => (
+  const CTA = ({ showProgress = false }: { showProgress?: boolean }) => (
     <a
-      href={CHECKOUT_URL}
-      className="block w-full text-center text-base font-bold py-5 rounded-full bg-green-500 hover:bg-green-600 text-white uppercase tracking-wide transition-colors animate-soft-bounce shadow-lg"
+      href={isVideoUnlocked ? CHECKOUT_URL : "#"}
+      onClick={(e) => {
+        if (!isVideoUnlocked) e.preventDefault();
+      }}
+      className={`block w-full text-center text-base font-bold py-5 rounded-full uppercase tracking-wide transition-colors shadow-lg ${
+        isVideoUnlocked
+          ? "bg-green-500 hover:bg-green-600 text-white animate-soft-bounce cursor-pointer"
+          : "bg-gray-400 text-white cursor-not-allowed opacity-75"
+      }`}
     >
-      PEGAR MEU PROTOCOLO DA GELATINA MOUNJARO
+      {showProgress && !isVideoUnlocked ? (
+        <div className="flex items-center justify-center gap-2">
+          <span>🔒 Assista o vídeo: {Math.round(videoProgress)}%</span>
+        </div>
+      ) : isVideoUnlocked ? (
+        "✅ PEGAR MEU PROTOCOLO DA GELATINA MOUNJARO"
+      ) : (
+        "🔒 ASSISTA O VÍDEO PARA CONTINUAR"
+      )}
     </a>
   );
 
@@ -61,23 +100,41 @@ const QuizVSL = () => {
           Veja como o Protocolo da Gelatina destrava seu corpo sem agulhas.
         </p>
 
-        {/* Video placeholder - replace with Vturb embed later */}
-        <div className="w-full rounded-xl overflow-hidden border border-border shadow-lg mb-6 bg-muted">
-          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-            <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-              Vídeo em breve
-            </div>
-          </div>
+        {/* Video Player */}
+        <div className="w-full rounded-xl overflow-hidden border border-border shadow-lg mb-6 bg-black">
+          <video
+            ref={videoRef}
+            controls
+            className="w-full h-auto max-h-96 bg-black"
+            controlsList="nodownload"
+          >
+            <source
+              src="https://example.com/vsl-video.mp4"
+              type="video/mp4"
+            />
+            Seu navegador não suporta o elemento de vídeo. Por favor, atualize seu navegador.
+          </video>
         </div>
 
-        {/* CTA Button + everything below - appears after 1m30s */}
-        <div
-          className={`w-full transition-all duration-700 ${
-            showCTA ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none h-0 overflow-hidden"
-          }`}
-        >
+        {/* Video Progress Bar - visible when not yet watched */}
+        {!isVideoUnlocked && (
+          <div className="w-full mb-4">
+            <div className="w-full h-2 bg-gray-300 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-primary transition-all duration-300"
+                style={{ width: `${videoProgress}%` }}
+              />
+            </div>
+            <p className="text-center text-xs text-muted-foreground mt-2">
+              {Math.round(videoProgress)}% - Assista até o final para desbloquear
+            </p>
+          </div>
+        )}
+
+        {/* CTA Button + everything below */}
+        <div className="w-full">
           <div className="mb-8">
-            <CTA />
+            <CTA showProgress={true} />
           </div>
 
           {/* ===== OFERTA SECTION (integrated) ===== */}
@@ -168,7 +225,7 @@ const QuizVSL = () => {
             <p className="text-5xl font-extrabold text-green-500 my-2">R$ 37,70</p>
             <p className="text-xs text-muted-foreground mb-4">Ou 6x de R$6,28</p>
 
-            <CTA />
+            <CTA showProgress={false} />
           </div>
         </div>
 
@@ -224,7 +281,6 @@ const QuizVSL = () => {
             <a href="#" className="underline">Políticas de Privacidade</a>
           </div>
         </div>
-        {/* Close showCTA wrapper */}
         </div>
       </div>
     </div>

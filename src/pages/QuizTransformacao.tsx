@@ -78,9 +78,6 @@ const QuizTransformacao = () => {
 
         <p className="text-muted-foreground text-sm">Aguarde um momento...</p>
       </div>
-          SIM! Quero essa transformação! 🔥
-        </Button>
-      </div>
     </QuizLayout>
   );
 };
