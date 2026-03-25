@@ -32,6 +32,7 @@ import QuizLoadingFinal from "./pages/QuizLoadingFinal";
 import QuizVSL from "./pages/QuizVSL";
 import QuizBodyGoal from "./pages/QuizBodyGoal";
 import QuizMetaKg from "./pages/QuizMetaKg";
+import QuizOffer from "./pages/QuizOffer";
 
 import NotFound from "./pages/NotFound";
 
@@ -73,6 +74,7 @@ const App = () => (
           <Route path="/quiz/25" element={<QuizVSL />} />
           <Route path="/quiz/26" element={<QuizBodyGoal />} />
           <Route path="/quiz/27" element={<QuizMetaKg />} />
+          <Route path="/quiz/28" element={<QuizOffer />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import QuizLayout from "@/components/QuizLayout";
+import logoMounjaro from "@/assets/logo-mounjaro.png";
 
-const CHECKOUT_URL = "#"; // Replace with actual checkout URL
+const OFFER_ROUTE = "/quiz/28";
 
 const QuizVSL = () => {
   const navigate = useNavigate();
@@ -74,12 +75,12 @@ const QuizVSL = () => {
           </span>
         </div>
       ) : (
-        <a
-          href={CHECKOUT_URL}
-          className="block w-full text-center text-base font-bold py-5 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] text-white uppercase tracking-wide transition-colors shadow-lg animate-soft-bounce"
+        <button
+          onClick={() => navigate(OFFER_ROUTE)}
+          className="w-full text-base font-bold py-5 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] text-white uppercase tracking-wide transition-colors shadow-lg animate-soft-bounce"
         >
           Pegar meu Protocolo ✅
-        </a>
+        </button>
       )}
     </QuizLayout>
   );
