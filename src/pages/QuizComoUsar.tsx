@@ -2,50 +2,99 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import QuizLayout from "@/components/QuizLayout";
 
-const steps = [
-  { step: "Passo 1", title: "Prepare a gelatina", desc: "Siga a receita simples do app", emoji: "⭐" },
-  { step: "Passo 2", title: "Consuma 2x ao dia", desc: "Uma de manhã e uma antes de dormir", emoji: "🕐" },
-  { step: "Passo 3", title: "Siga por 30 dias", desc: "O protocolo completo para resultados", emoji: "📅" },
-];
-
-const schedule = [
-  { label: "Manhã", desc: "Em jejum", emoji: "🌅" },
-  { label: "Dia", desc: "Sem fome", emoji: "☀️" },
-  { label: "Noite", desc: "Antes de dormir", emoji: "🌙" },
+const beneficios = [
+  "Receita 100% Natural",
+  "Ativa o GLP-1 do seu corpo",
+  "Queima de Gordura localizada",
+  "Regula o seu Metabolismo",
+  "Leveza e corpo Desinchado",
+  "Menos impulsos por doces",
+  "Fácil de fazer e seguir",
 ];
 
 const QuizComoUsar = () => {
   const navigate = useNavigate();
+  const userName = localStorage.getItem("userName") || "você";
+  const pesoAtual = Number(localStorage.getItem("quiz_peso_atual") || "75");
+  const alturaCm = Number(localStorage.getItem("quiz_altura") || "165");
+  const alturaM = alturaCm / 100;
+  const imc = (pesoAtual / (alturaM * alturaM)).toFixed(1);
+  const imcNum = parseFloat(imc);
+
+  let classificacao = "Normal";
+  if (imcNum >= 30) classificacao = "Obesidade";
+  else if (imcNum >= 25) classificacao = "Sobrepeso";
+  else if (imcNum < 18.5) classificacao = "Abaixo do peso";
 
   return (
     <QuizLayout progress={100}>
-      <h1 className="text-xl font-bold text-foreground mb-1 text-center">
-        Como usar a <span className="text-primary">Gelatina Mounjaro</span>
+      {/* IMC Result */}
+      <h1 className="text-lg font-bold text-foreground mb-6 text-center">
+        Resultado da sua <span className="text-primary">análise</span>, {userName}
       </h1>
-      <p className="text-muted-foreground text-sm mb-6 text-center">Simples, prático e eficaz</p>
 
-      <div className="w-full flex flex-col gap-3 mb-6">
-        {steps.map((s) => (
-          <div key={s.step} className="flex items-start gap-4 p-4 rounded-xl border border-border">
-            <span className="text-3xl">{s.emoji}</span>
-            <div>
-              <span className="text-xs text-primary font-semibold">{s.step}</span>
-              <p className="font-bold text-foreground text-sm">{s.title}</p>
-              <p className="text-xs text-muted-foreground">{s.desc}</p>
-            </div>
+      <div className="w-full rounded-2xl border border-border p-6 mb-6 bg-background/50">
+        <div className="text-center mb-4">
+          <span className="text-6xl font-bold text-primary">{imc}</span>
+          <p className="text-muted-foreground text-sm mt-2">
+            Seu IMC: <strong className="text-primary">{classificacao}</strong>
+          </p>
+        </div>
+
+        {/* Alert signs */}
+        <div className="border-t border-border pt-4">
+          <p className="text-xs font-semibold text-foreground mb-3 flex items-center gap-2">
+            ⚠️ Sinais de alerta identificados:
+          </p>
+          <ul className="space-y-2">
+            <li className="text-xs text-muted-foreground flex items-center gap-2">
+              <span className="text-red-600">❌</span> Metabolismo desacelerado
+            </li>
+            <li className="text-xs text-muted-foreground flex items-center gap-2">
+              <span className="text-red-600">❌</span> Risco de acúmulo de gordura visceral
+            </li>
+            <li className="text-xs text-muted-foreground flex items-center gap-2">
+              <span className="text-red-600">❌</span> Hormônios de saciedade desregulados
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Green info box */}
+      <div className="w-full rounded-2xl bg-green-50 border border-green-200 p-4 mb-6">
+        <p className="text-xs text-green-900">
+          🧪 <strong>O segredo para secar: ativar o GLP-1.</strong> A <strong>Gelatina Mounjaro</strong> é o "interruptor" hormonal natural!
+        </p>
+      </div>
+
+      {/* Benefits */}
+      <h2 className="text-lg font-bold text-foreground mb-4 text-center">
+        Benefícios da <span className="text-primary">Gelatina Mounjaro</span> 🍒
+      </h2>
+
+      <div className="w-full flex flex-col gap-2 mb-6">
+        {beneficios.map((benefit) => (
+          <div key={benefit} className="flex items-center gap-3 p-3 rounded-xl bg-background/50 border border-border">
+            <span className="text-lg">✅</span>
+            <span className="text-sm text-foreground font-medium">{benefit}</span>
           </div>
         ))}
       </div>
 
-      {/* Schedule */}
-      <div className="w-full rounded-2xl bg-secondary/60 p-4 mb-8 flex justify-around">
-        {schedule.map((s) => (
-          <div key={s.label} className="flex flex-col items-center gap-1">
-            <span className="text-2xl">{s.emoji}</span>
-            <span className="font-semibold text-foreground text-xs">{s.label}</span>
-            <span className="text-[10px] text-muted-foreground">{s.desc}</span>
-          </div>
-        ))}
+      {/* Testimonial */}
+      <div className="w-full rounded-2xl bg-background/50 border border-border p-4 mb-6 text-center">
+        <div className="aspect-video bg-gray-300 rounded-lg mb-4 flex items-center justify-center flex-shrink-0">
+          <span className="text-gray-500 text-sm">Imagem será adicionada</span>
+        </div>
+        <p className="font-semibold text-foreground text-sm mb-2">
+          "Perdi 12kg em 5 semanas!"
+        </p>
+        <p className="text-xs text-muted-foreground">
+          Maria, 32 anos - São Paulo
+        </p>
+        <div className="flex justify-center gap-1 mt-2">
+          {[1,2,3,4,5].map((i) => <span key={i} className="text-lg">⭐</span>)}
+        </div>
       </div>
 
       <Button
@@ -53,7 +102,7 @@ const QuizComoUsar = () => {
         className="w-full text-base font-semibold py-6 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] hover:opacity-90 transition-opacity"
         onClick={() => navigate("/quiz/20")}
       >
-        ✅ Sim, eu me comprometo!
+        Continuar
       </Button>
     </QuizLayout>
   );
