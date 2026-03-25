@@ -1,33 +1,66 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import QuizLayout from "@/components/QuizLayout";
-import logoMounjaro from "@/assets/logo-mounjaro.png";
 
 const OFFER_ROUTE = "/quiz/28";
+const PLAYER_ID = "69c46061f5a026a3bac3dd4e";
+const PLAYER_URL = `https://scripts.converteai.net/5f516cb5-1331-4896-8140-9224d21bc287/players/${PLAYER_ID}/v4/embed.html`;
 
 const QuizVSL = () => {
   const navigate = useNavigate();
   const [videoProgress, setVideoProgress] = useState(0);
   const [isVideoUnlocked, setIsVideoUnlocked] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const userName = localStorage.getItem("userName") || "você";
 
-  // Track video progress
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    // Inject Vturb SDK script once
+    if (!document.getElementById("vturb-sdk-v4")) {
+      const s = document.createElement("script");
+      s.id = "vturb-sdk-v4";
+      s.src = "https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js";
+      s.async = true;
+      document.head.appendChild(s);
+    }
 
-    const handleTimeUpdate = () => {
-      if (!video.duration) return;
-      const progress = (video.currentTime / video.duration) * 100;
-      setVideoProgress(Math.min(progress, 100));
-      if (progress >= 99) {
+    // Set iframe src (lazy load, same as original embed)
+    const iframe = iframeRef.current;
+    if (iframe) {
+      const search = location.search || "?";
+      iframe.src = `${PLAYER_URL}${search}&vl=${encodeURIComponent(location.href)}`;
+    }
+
+    // Listen for postMessage events from Vturb player
+    const handleMessage = (event: MessageEvent) => {
+      const d = event.data;
+      if (!d || typeof d !== "object") return;
+
+      // Vturb fires events with playerid or id matching the player
+      const isOurPlayer =
+        d.playerid === PLAYER_ID || d.id === PLAYER_ID || d.playerId === PLAYER_ID;
+
+      if (!isOurPlayer) return;
+
+      const type = d.type || d.event || "";
+
+      if (type === "timeupdate" || type === "smartplayer:timeupdate") {
+        const cur = d.currentTime ?? d.time ?? 0;
+        const dur = d.duration ?? 1;
+        if (dur > 0) {
+          const pct = Math.min((cur / dur) * 100, 100);
+          setVideoProgress(pct);
+          if (pct >= 99) setIsVideoUnlocked(true);
+        }
+      }
+
+      if (type === "ended" || type === "smartplayer:ended") {
         setIsVideoUnlocked(true);
+        setVideoProgress(100);
       }
     };
 
-    video.addEventListener("timeupdate", handleTimeUpdate);
-    return () => video.removeEventListener("timeupdate", handleTimeUpdate);
+    window.addEventListener("message", handleMessage);
+    return () => window.removeEventListener("message", handleMessage);
   }, []);
 
   return (
@@ -43,25 +76,33 @@ const QuizVSL = () => {
         </h1>
       </div>
 
-      <p className="text-sm text-foreground mb-5 flex items-center gap-1">
+      <p className="text-sm text-foreground mb-4">
         ✅ Assista o vídeo de 2 min para pegar seu Protocolo
       </p>
 
-      {/* Portrait video player */}
-      <div className="w-full rounded-2xl overflow-hidden border border-border shadow-lg mb-4 bg-black">
-        <video
-          ref={videoRef}
-          controls
-          className="w-full"
-          style={{ aspectRatio: "9/16", maxHeight: "60vh", objectFit: "cover" }}
-          controlsList="nodownload"
-          playsInline
+      {/* Vturb Portrait Player */}
+      <div
+        id={`ifr_${PLAYER_ID}_wrapper`}
+        className="w-full mb-4"
+        style={{ maxWidth: "400px", margin: "0 auto 16px" }}
+      >
+        <div
+          id={`ifr_${PLAYER_ID}_aspect`}
+          style={{ position: "relative", paddingBottom: "177.64%", paddingTop: 0 }}
         >
-          <source src="https://example.com/vsl-video.mp4" type="video/mp4" />
-        </video>
+          <iframe
+            ref={iframeRef}
+            id={`ifr_${PLAYER_ID}`}
+            frameBorder={0}
+            allowFullScreen
+            allow="autoplay; fullscreen"
+            referrerPolicy="origin"
+            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
+          />
+        </div>
       </div>
 
-      {/* Progress bar / CTA */}
+      {/* Lock bar / CTA */}
       {!isVideoUnlocked ? (
         <div className="w-full rounded-2xl border border-border bg-background p-4 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 flex-1 min-w-0">
@@ -77,7 +118,7 @@ const QuizVSL = () => {
       ) : (
         <button
           onClick={() => navigate(OFFER_ROUTE)}
-          className="w-full text-base font-bold py-5 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] text-white uppercase tracking-wide transition-colors shadow-lg animate-soft-bounce"
+          className="w-full text-base font-bold py-5 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] text-white uppercase tracking-wide shadow-lg animate-soft-bounce"
         >
           Pegar meu Protocolo ✅
         </button>
