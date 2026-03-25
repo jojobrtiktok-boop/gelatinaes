@@ -3,14 +3,17 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import QuizLayout from "@/components/QuizLayout";
 
+// Add the woman body image to src/assets/ as "mulher-areas.png"
+// import mulherAreas from "@/assets/mulher-areas.png";
+
 const areaOptions = [
   { label: "Papada", emoji: "😋" },
   { label: "Braços", emoji: "💪" },
-  { label: "Barriga", emoji: "🟤" },
-  { label: "Cintura", emoji: "😋" },
-  { label: "Glúteos", emoji: "🍊" },
-  { label: "Coxas", emoji: "🧵" },
-  { label: "Corpo Todo", emoji: "🐝" },
+  { label: "Barriga", emoji: "🍩" },
+  { label: "Cintura", emoji: "⌛" },
+  { label: "Glúteos", emoji: "🍑" },
+  { label: "Coxas", emoji: "🦵" },
+  { label: "Corpo Todo", emoji: "✨" },
 ];
 
 const QuizAreas = () => {
@@ -26,36 +29,46 @@ const QuizAreas = () => {
   return (
     <QuizLayout progress={35}>
       <h1 className="text-xl font-bold text-foreground mb-1 leading-tight text-center">
-        Quais as áreas que você mais quer perder gordura?
+        Quais as áreas que você{" "}
+        <span className="text-primary">mais quer perder gordura?</span>
       </h1>
       <p className="text-muted-foreground text-sm mb-6 text-center">
-        Selecione todas que se aplicam.
+        Toque nas áreas desejadas.
       </p>
 
-      <div className="w-full grid grid-cols-2 gap-3 mb-8">
-        {areaOptions.map((opt) => (
-          <button
-            key={opt.label}
-            onClick={() => toggleSelect(opt.label)}
-            className={`flex items-start justify-between p-4 rounded-xl border transition-all ${
-              selected.includes(opt.label)
-                ? "border-primary bg-secondary"
-                : "border-border bg-background hover:border-primary/40"
-            }`}
-          >
-            <div className="flex flex-col items-start gap-2">
-              <span className="text-2xl">{opt.emoji}</span>
-              <span className="font-medium text-foreground text-sm">{opt.label}</span>
-            </div>
-            <div
-              className={`w-5 h-5 rounded border-2 transition-all mt-1 ${
+      <div className="w-full flex gap-3 mb-8">
+        {/* Woman body image */}
+        <div className="w-28 shrink-0 rounded-xl overflow-hidden bg-secondary/40 flex items-center justify-center self-stretch">
+          {/* Replace the div below with: <img src={mulherAreas} alt="Corpo" className="w-full h-full object-cover object-top" /> */}
+          <span className="text-4xl">🧍‍♀️</span>
+        </div>
+
+        {/* Options list */}
+        <div className="flex-1 flex flex-col gap-2">
+          {areaOptions.map((opt) => (
+            <button
+              key={opt.label}
+              onClick={() => toggleSelect(opt.label)}
+              className={`flex items-center justify-between px-3 py-2.5 rounded-xl border transition-all ${
                 selected.includes(opt.label)
-                  ? "border-primary bg-primary"
-                  : "border-muted-foreground/30"
+                  ? "border-primary bg-secondary"
+                  : "border-border bg-background hover:border-primary/40"
               }`}
-            />
-          </button>
-        ))}
+            >
+              <div className="flex items-center gap-2">
+                <span className="text-lg">{opt.emoji}</span>
+                <span className="font-medium text-foreground text-sm">{opt.label}</span>
+              </div>
+              <div
+                className={`w-5 h-5 rounded border-2 transition-all shrink-0 ${
+                  selected.includes(opt.label)
+                    ? "border-primary bg-primary"
+                    : "border-muted-foreground/30"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
       </div>
 
       <Button
