@@ -66,19 +66,10 @@ const QuizVSL = () => {
   return (
     <QuizLayout progress={100}>
       {/* Header */}
-      <div className="flex items-center gap-2 mb-1">
-        <div className="w-7 h-7 rounded-full bg-green-500 flex items-center justify-center shrink-0">
-          <span className="text-white text-sm font-bold">✓</span>
-        </div>
-        <h1 className="text-lg font-bold text-foreground leading-tight">
-          <span className="text-primary">{userName}</span>, seu protocolo está{" "}
-          <span className="text-primary">pronto!</span>
-        </h1>
-      </div>
-
-      <p className="text-sm text-foreground mb-4">
-        ✅ Assista o vídeo de 2 min para pegar seu Protocolo
-      </p>
+      <h1 className="text-lg font-bold text-foreground mb-4 text-center leading-tight">
+        Assista à explicação rápida de{" "}
+        <span className="text-primary">1 Minuto</span> 👀
+      </h1>
 
       {/* Vturb Portrait Player */}
       <div
@@ -108,7 +99,7 @@ const QuizVSL = () => {
           <div className="flex items-center gap-2 flex-1 min-w-0">
             <span className="text-xl">🔒</span>
             <span className="text-sm font-medium text-foreground truncate">
-              Clique no vídeo para iniciar ▶
+              Assista para continuar...
             </span>
           </div>
           <span className="text-sm font-bold text-primary shrink-0">
