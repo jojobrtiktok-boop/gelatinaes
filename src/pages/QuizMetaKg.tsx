@@ -29,7 +29,7 @@ const QuizMetaKg = () => {
         <Button
           size="lg"
           className="w-full text-base font-semibold py-6 rounded-full bg-green-500 hover:bg-green-600 text-white transition-colors"
-          onClick={() => navigate("/quiz/23")}
+          onClick={() => navigate("/quiz/29")}
         >
           SIM! Quero muito começar! 🔥
         </Button>

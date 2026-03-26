@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import QuizLayout from "@/components/QuizLayout";
 
-const NEXT_ROUTE = "/quiz/24";
+const NEXT_ROUTE = "/quiz/26";
 const PLAYER_ID = "69c46061f5a026a3bac3dd4e";
 const PLAYER_URL = `https://scripts.converteai.net/5f516cb5-1331-4896-8140-9224d21bc287/players/${PLAYER_ID}/v4/embed.html`;
 

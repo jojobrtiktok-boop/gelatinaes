@@ -40,7 +40,7 @@ const QuizHistorias = () => {
       <Button
         size="lg"
         className="w-full text-base font-semibold py-6 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] hover:opacity-90 transition-opacity"
-        onClick={() => navigate("/quiz/24")}
+        onClick={() => navigate("/quiz/30")}
       >
         Ver meu protocolo personalizado
       </Button>

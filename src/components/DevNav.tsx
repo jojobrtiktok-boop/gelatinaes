@@ -30,6 +30,7 @@ const ROUTES = [
   "/quiz/27",
   "/quiz/28",
   "/quiz/29",
+  "/quiz/30",
 ];
 
 const DevNav = () => {

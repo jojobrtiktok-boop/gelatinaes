@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import QuizLayout from "@/components/QuizLayout";
 
-const QuizTransformacao = () => {
+const QuizTransformacao2 = () => {
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
 
@@ -13,7 +13,7 @@ const QuizTransformacao = () => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          if (!isDevNav) setTimeout(() => navigate("/quiz/23"), 1000);
+          if (!isDevNav) setTimeout(() => navigate("/quiz/25"), 1000);
           return 100;
         }
         return Math.min(prev + Math.random() * 12, 100);
@@ -59,4 +59,4 @@ const QuizTransformacao = () => {
   );
 };
 
-export default QuizTransformacao;
+export default QuizTransformacao2;
