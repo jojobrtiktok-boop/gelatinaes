@@ -2,11 +2,11 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import QuizLayout from "@/components/QuizLayout";
 
-const NEXT_ROUTE = "/quiz/24";
-const PLAYER_ID = "69c46061f5a026a3bac3dd4e";
+const NEXT_ROUTE = "/quiz/28";
+const PLAYER_ID = "69c46056f5a026a3bac3dd1f";
 const PLAYER_URL = `https://scripts.converteai.net/5f516cb5-1331-4896-8140-9224d21bc287/players/${PLAYER_ID}/v4/embed.html`;
 
-const QuizVSL = () => {
+const QuizVSL2 = () => {
   const navigate = useNavigate();
   const [videoProgress, setVideoProgress] = useState(0);
   const [isVideoUnlocked, setIsVideoUnlocked] = useState(false);
@@ -14,7 +14,6 @@ const QuizVSL = () => {
   const userName = localStorage.getItem("userName") || "você";
 
   useEffect(() => {
-    // Inject Vturb SDK script once
     if (!document.getElementById("vturb-sdk-v4")) {
       const s = document.createElement("script");
       s.id = "vturb-sdk-v4";
@@ -23,19 +22,16 @@ const QuizVSL = () => {
       document.head.appendChild(s);
     }
 
-    // Set iframe src (lazy load, same as original embed)
     const iframe = iframeRef.current;
     if (iframe) {
       const search = location.search || "?";
       iframe.src = `${PLAYER_URL}${search}&vl=${encodeURIComponent(location.href)}`;
     }
 
-    // Listen for postMessage events from Vturb player
     const handleMessage = (event: MessageEvent) => {
       const d = event.data;
       if (!d || typeof d !== "object") return;
 
-      // Vturb fires events with playerid or id matching the player
       const isOurPlayer =
         d.playerid === PLAYER_ID || d.id === PLAYER_ID || d.playerId === PLAYER_ID;
 
@@ -65,13 +61,11 @@ const QuizVSL = () => {
 
   return (
     <QuizLayout progress={100}>
-      {/* Header */}
       <h1 className="text-lg font-bold text-foreground mb-4 text-center leading-tight">
-        Assista à explicação rápida de{" "}
-        <span className="text-primary">1 Minuto</span> 👀
+        <span className="text-primary">{userName}</span>, seu protocolo está{" "}
+        <span className="text-primary">pronto!</span> 🎉
       </h1>
 
-      {/* Vturb Portrait Player */}
       <div
         id={`ifr_${PLAYER_ID}_wrapper`}
         className="w-full mb-4"
@@ -79,7 +73,7 @@ const QuizVSL = () => {
       >
         <div
           id={`ifr_${PLAYER_ID}_aspect`}
-          style={{ position: "relative", paddingBottom: "177.64%", paddingTop: 0 }}
+          style={{ position: "relative", paddingBottom: "177.59%", paddingTop: 0 }}
         >
           <iframe
             ref={iframeRef}
@@ -93,7 +87,6 @@ const QuizVSL = () => {
         </div>
       </div>
 
-      {/* Lock bar / CTA */}
       {!isVideoUnlocked ? (
         <div className="w-full rounded-2xl border border-border bg-background p-4 flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 flex-1 min-w-0">
@@ -118,4 +111,4 @@ const QuizVSL = () => {
   );
 };
 
-export default QuizVSL;
+export default QuizVSL2;

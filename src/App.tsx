@@ -30,6 +30,7 @@ import QuizTransformacao from "./pages/QuizTransformacao";
 import QuizHistorias from "./pages/QuizHistorias";
 import QuizLoadingFinal from "./pages/QuizLoadingFinal";
 import QuizVSL from "./pages/QuizVSL";
+import QuizVSL2 from "./pages/QuizVSL2";
 import QuizBodyGoal from "./pages/QuizBodyGoal";
 import QuizMetaKg from "./pages/QuizMetaKg";
 import QuizOffer from "./pages/QuizOffer";
@@ -70,9 +71,10 @@ const App = () => (
           <Route path="/quiz/20" element={<QuizLoading />} />
           <Route path="/quiz/21" element={<QuizCorpoSonhos />} />
           <Route path="/quiz/22" element={<QuizTransformacao />} />
-          <Route path="/quiz/23" element={<QuizHistorias />} />
+          <Route path="/quiz/23" element={<QuizVSL />} />
           <Route path="/quiz/24" element={<QuizLoadingFinal />} />
-          <Route path="/quiz/25" element={<QuizVSL />} />
+          <Route path="/quiz/25" element={<QuizVSL2 />} />
+          <Route path="/quiz/29" element={<QuizHistorias />} />
           <Route path="/quiz/26" element={<QuizBodyGoal />} />
           <Route path="/quiz/27" element={<QuizMetaKg />} />
           <Route path="/quiz/28" element={<QuizOffer />} />

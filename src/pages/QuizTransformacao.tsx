@@ -8,13 +8,12 @@ const QuizTransformacao = () => {
 
   useEffect(() => {
     const isDevNav = localStorage.getItem("devnav") === "1";
-    if (isDevNav) return;
 
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 80) {
           clearInterval(interval);
-          setTimeout(() => navigate("/quiz/26"), 2000);
+          if (!isDevNav) setTimeout(() => navigate("/quiz/23"), 2000);
           return 80;
         }
         return prev + Math.random() * 15;
