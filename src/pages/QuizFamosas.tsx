@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import QuizLayout from "@/components/QuizLayout";
-import famosaMateria from "@/assets/famosa-materia.png";
+import transfGiovanna from "@/assets/transf-giovanna.png";
 
 const QuizFamosas = () => {
   const navigate = useNavigate();
@@ -15,18 +15,15 @@ const QuizFamosas = () => {
         La Gelatina Mounjaro es tendencia entre celebridades e influencers.
       </p>
 
-      {/* Testimonial card */}
-      <div className="w-full rounded-2xl overflow-hidden shadow-sm mb-6">
-        {/* Before/After image */}
-        <div className="w-full rounded-2xl overflow-hidden">
-          <img
-            src={famosaMateria}
-            alt="Simone Mendes transformação"
-            className="w-full object-cover"
-            loading="eager"
-            decoding="async"
-          />
-        </div>
+      {/* Before/After image - simple and clean */}
+      <div className="w-full rounded-2xl overflow-hidden mb-6">
+        <img
+          src={transfGiovanna}
+          alt="Transformación antes y después"
+          className="w-full object-cover"
+          loading="eager"
+          decoding="async"
+        />
       </div>
 
       <Button
