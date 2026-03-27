@@ -3,9 +3,9 @@ import QuizLayout from "@/components/QuizLayout";
 import antesDepoisIlust from "@/assets/compromisso-antesdepois.png";
 
 const options = [
-  { label: "¡Sí me comprometo!", emoji: "🤩" },
-  { label: "Quiero empezar hoy", emoji: "😎" },
-  { label: "No sé...", emoji: "🤔" },
+  { label: "¡Sí me comprometo!", icon: "✓" },
+  { label: "Quiero empezar hoy", icon: "✓" },
+  { label: "No sé...", icon: "✓" },
 ];
 
 const QuizCorpoSonhos = () => {
@@ -14,11 +14,11 @@ const QuizCorpoSonhos = () => {
   return (
     <QuizLayout progress={97}>
       {/* Before/After illustration */}
-      <div className="w-full flex items-center justify-center gap-3 mb-5">
+      <div className="w-full flex items-center justify-center mb-5">
         <img
           src={antesDepoisIlust}
           alt="Antes y después"
-          className="w-full max-w-xs object-contain"
+          className="w-full max-w-sm object-contain"
           loading="eager"
         />
       </div>
@@ -44,11 +44,8 @@ const QuizCorpoSonhos = () => {
             onClick={() => navigate("/quiz/22")}
             className="w-full flex items-center justify-between gap-3 px-4 py-4 rounded-2xl border border-border bg-background hover:border-primary hover:bg-primary/5 transition-colors text-left"
           >
-            <div className="flex items-center gap-3">
-              <span className="text-2xl">{opt.emoji}</span>
-              <span className="text-sm font-medium text-foreground">{opt.label}</span>
-            </div>
-            <div className="w-5 h-5 rounded-full border-2 border-border shrink-0" />
+            <span className="text-sm font-medium text-foreground">{opt.label}</span>
+            <span className="text-green-600 text-xl font-bold">✓</span>
           </button>
         ))}
       </div>
