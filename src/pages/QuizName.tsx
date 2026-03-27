@@ -18,14 +18,14 @@ const QuizName = () => {
   return (
     <QuizLayout progress={50}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
-        Qual é o seu nome?
+        ¿Cuál es tu nombre?
       </h1>
       <p className="text-muted-foreground text-sm mb-8 text-center">
-        Para personalizarmos sua experiência.
+        Para personalizar tu experiencia.
       </p>
 
       <Input
-        placeholder="Seu primeiro nome"
+        placeholder="Tu primer nombre"
         value={name}
         onChange={(e) => setName(e.target.value.slice(0, 50))}
         className="mb-8 py-6 text-base rounded-xl border-primary/30 focus:border-primary"

@@ -4,60 +4,60 @@ import antesDepois from "@/assets/antes-depois.png";
 import gelatinaBowl from "@/assets/gelatina-bowl.png";
 import garantia from "@/assets/garantia-30dias.png";
 
-const CHECKOUT_URL = "#"; // Replace with actual checkout URL
+const CHECKOUT_URL = "https://pay.hotmart.com/S105015763T?checkoutMode=10";
 
 const TOTAL_SECONDS = 3 * 60 + 43; // 3:43
 
 const weeks = [
-  { emoji: "✨", bg: "bg-purple-100", color: "text-purple-600", week: "SEMANA 1", text: "Desincha e primeiros resultados", meta: false },
-  { emoji: "📋", bg: "bg-blue-100", color: "text-blue-600", week: "SEMANA 2", text: "Perda de até 3 kg", meta: false },
-  { emoji: "⚡", bg: "bg-yellow-100", color: "text-yellow-600", week: "SEMANA 3", text: "Perda de 5 a 7 kg", meta: false },
-  { emoji: "🔥", bg: "bg-orange-100", color: "text-orange-600", week: "SEMANA 4", text: "Perda de 9 a 12 kg", meta: true },
+  { emoji: "✨", bg: "bg-purple-100", color: "text-purple-600", week: "SEMANA 1", text: "Desinflamación y primeros resultados", meta: false },
+  { emoji: "📋", bg: "bg-blue-100", color: "text-blue-600", week: "SEMANA 2", text: "Pérdida de hasta 3 kg", meta: false },
+  { emoji: "⚡", bg: "bg-yellow-100", color: "text-yellow-600", week: "SEMANA 3", text: "Pérdida de 5 a 7 kg", meta: false },
+  { emoji: "🔥", bg: "bg-orange-100", color: "text-orange-600", week: "SEMANA 4", text: "Pérdida de 9 a 12 kg", meta: true },
 ];
 
 const benefits = [
-  "Receita completa da Gelatina Mounjaro",
-  "Protocolo de 30 dias passo a passo",
-  "Acesso ao Aplicativo Exclusivo",
-  "Lista completa dos ingredientes",
-  "Dicas para acelerar resultados",
-  "Acesso vitalício ao app",
+  "Receta completa de la Gelatina Mounjaro",
+  "Protocolo de 30 días paso a paso",
+  "Acceso a la Aplicación Exclusiva",
+  "Lista completa de los ingredientes",
+  "Consejos para acelerar los resultados",
+  "Acceso de por vida al app",
 ];
 
 const bonuses = [
-  "BÔNUS: Dietas completas",
-  "BÔNUS: Receitas doces saudáveis",
-  "BÔNUS: Aulas em vídeo de pilates na parede",
+  "BONO: Dietas completas",
+  "BONO: Recetas de dulces saludables",
+  "BONO: Clases en video de pilates en la pared",
 ];
 
 const faqs = [
   {
-    q: "A Gelatina Mounjaro realmente funciona?",
-    a: "Sim! A fórmula é baseada em estudos científicos e milhares de mulheres já comprovaram os resultados seguindo o protocolo de 30 dias.",
+    q: "¿La Gelatina Mounjaro realmente funciona?",
+    a: "¡Sí! La fórmula está basada en estudios científicos y miles de mujeres ya han comprobado los resultados siguiendo el protocolo de 30 días.",
   },
   {
-    q: "Quanto tempo leva para ver resultados?",
-    a: "A maioria das usuárias nota diferença já na primeira semana, com resultados significativos em 30 dias.",
+    q: "¿Cuánto tiempo tarda en ver resultados?",
+    a: "La mayoría de las usuarias nota la diferencia ya en la primera semana, con resultados significativos en 30 días.",
   },
   {
-    q: "É seguro? Tem efeitos colaterais?",
-    a: "A gelatina é feita com ingredientes 100% naturais e seguros. Não há efeitos colaterais conhecidos.",
+    q: "¿Es seguro? ¿Tiene efectos secundarios?",
+    a: "La gelatina está hecha con ingredientes 100% naturales y seguros. No hay efectos secundarios conocidos.",
   },
   {
-    q: "Como vou receber o protocolo?",
-    a: "Você receberá acesso imediato ao protocolo completo e ao aplicativo exclusivo após a compra.",
+    q: "¿Cómo recibiré el protocolo?",
+    a: "Recibirás acceso inmediato al protocolo completo y a la aplicación exclusiva después de la compra.",
   },
   {
-    q: "E se não funcionar pra mim?",
-    a: "Oferecemos garantia de 30 dias. Se não ficar satisfeita, devolvemos 100% do seu dinheiro.",
+    q: "¿Y si no funciona para mí?",
+    a: "Ofrecemos garantía de 30 días. Si no estás satisfecha, te devolvemos el 100% de tu dinero.",
   },
   {
-    q: "O pagamento é seguro?",
-    a: "Sim! Utilizamos plataformas de pagamento com criptografia de dados e certificação SSL.",
+    q: "¿El pago es seguro?",
+    a: "¡Sí! Utilizamos plataformas de pago con cifrado de datos y certificación SSL.",
   },
   {
-    q: "Preciso comprar ingredientes caros?",
-    a: "Não! Todos os ingredientes são acessíveis e encontrados em qualquer supermercado.",
+    q: "¿Necesito comprar ingredientes caros?",
+    a: "¡No! Todos los ingredientes son accesibles y se encuentran en cualquier supermercado.",
   },
 ];
 
@@ -66,12 +66,12 @@ const CTA = () => (
     href={CHECKOUT_URL}
     className="block w-full text-center text-base font-extrabold py-5 rounded-full bg-green-500 hover:bg-green-600 text-white uppercase tracking-wide transition-colors shadow-lg"
   >
-    QUERO COMEÇAR 🤩
+    QUIERO EMPEZAR 🤩
   </a>
 );
 
 const QuizOffer = () => {
-  const userName = localStorage.getItem("userName") || "você";
+  const userName = localStorage.getItem("userName") || "tú";
   const pesoAtual = Number(localStorage.getItem("quiz_peso_atual") || "75");
   const pesoDesejado = Number(localStorage.getItem("quiz_peso_desejado") || String(pesoAtual - 10));
   const meta = Math.max(3, pesoAtual - pesoDesejado);
@@ -95,12 +95,12 @@ const QuizOffer = () => {
     <div className="min-h-screen flex flex-col bg-background">
       {/* Logo */}
       <div className="flex justify-center pt-4 pb-2">
-        <img src={logoMounjaro} alt="Mounjaro Gelatina" className="w-24" />
+        <img src={logoMounjaro} alt="Mounjaro Gelatina" className="w-40" />
       </div>
 
       {/* Urgency bar */}
       <div className="mx-4 mb-4 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] text-white text-sm font-bold py-2.5 px-4 flex items-center justify-center gap-2">
-        <span>🤯 Seu protocolo expira em:</span>
+        <span>🤯 Tu protocolo expira en:</span>
         <span className="bg-white text-primary font-extrabold px-3 py-0.5 rounded-full text-sm">
           {mins}:{secs}
         </span>
@@ -113,32 +113,48 @@ const QuizOffer = () => {
             <span className="text-green-500 text-2xl font-bold">✓</span>
           </div>
           <p className="text-lg font-bold text-foreground">
-            <span className="text-primary">{userName}</span>, seu
+            <span className="text-primary">{userName}</span>, tu
           </p>
           <div className="w-full rounded-xl bg-green-50 border border-green-200 px-4 py-3">
             <p className="text-green-800 font-extrabold text-base text-center leading-snug">
-              Plano da Gelatina de 30 dias foi<br />Gerado com Sucesso!
+              Plan de Gelatina de 30 días fue<br />¡Generado con Éxito!
             </p>
           </div>
           <p className="text-xs text-muted-foreground text-center">
-            Ele é exclusivo e gerado só uma vez, não saia dessa página para não perdê-lo
+            Es exclusivo y se genera solo una vez, no salgas de esta página para no perderlo
           </p>
         </div>
 
         {/* Before/After image */}
-        <div className="w-full rounded-2xl overflow-hidden border border-border">
-          <img src={antesDepois} alt="Antes e Depois" className="w-full object-cover" />
+        <div className="w-full rounded-2xl overflow-hidden border border-border relative">
+          <img src={antesDepois} alt="Antes y Después" className="w-full object-cover" />
+          {/* Arrow in center */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-green-500 flex items-center justify-center shadow-lg">
+            <span className="text-white text-lg font-bold">→</span>
+          </div>
+          {/* Antes label */}
+          <div className="absolute bottom-3 left-4">
+            <span className="bg-gray-700/80 text-white text-xs font-bold px-3 py-1 rounded-full">
+              Antes
+            </span>
+          </div>
+          {/* Depois label */}
+          <div className="absolute bottom-3 right-4">
+            <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+              Después ✨
+            </span>
+          </div>
         </div>
 
         {/* Plan timeline */}
         <div className="w-full rounded-2xl overflow-hidden border border-border">
           <div className="bg-gradient-to-r from-primary to-[hsl(330,80%,55%)] text-white text-center py-3">
-            <p className="text-xs font-bold tracking-widest uppercase opacity-80">SEU PLANO EXCLUSIVO</p>
-            <p className="font-extrabold text-lg">1 Mês de Tratamento 🎯</p>
+            <p className="text-xs font-bold tracking-widest uppercase opacity-80">TU PLAN EXCLUSIVO</p>
+            <p className="font-extrabold text-lg">1 Mes de Tratamiento 🎯</p>
           </div>
           <div className="p-5">
             <p className="text-sm text-muted-foreground mb-4">
-              {userName}, seguindo o protocolo certinho, veja o que vai acontecer:
+              {userName}, siguiendo el protocolo correctamente, mira lo que va a pasar:
             </p>
             <div className="space-y-3">
               {weeks.map((w) => (
@@ -161,7 +177,7 @@ const QuizOffer = () => {
             {/* Expected result badge */}
             <div className="mt-4 bg-green-50 border border-green-200 rounded-xl px-4 py-2">
               <p className="text-green-800 text-sm font-semibold text-center">
-                🎯 Resultado esperado: -{lower} a {upper} kg em 30 dias
+                🎯 Resultado esperado: -{lower} a {upper} kg en 30 días
               </p>
             </div>
           </div>
@@ -171,7 +187,7 @@ const QuizOffer = () => {
         <div className="w-full rounded-2xl overflow-hidden border-2 border-primary">
           <div className="bg-gradient-to-r from-primary to-[hsl(330,80%,55%)] text-white text-center py-4">
             <p className="font-bold text-base">Gelatina Mounjaro + APP Protocolo Completo</p>
-            <p className="text-xs opacity-80 tracking-widest text-yellow-300 font-bold">ACESSO VITALÍCIO</p>
+            <p className="text-xs opacity-80 tracking-widest text-yellow-300 font-bold">ACCESO DE POR VIDA</p>
           </div>
           <div className="p-5 flex flex-col items-center">
             <img src={gelatinaBowl} alt="Gelatina" className="w-28 h-28 object-contain mb-4" loading="lazy" decoding="async" />
@@ -195,23 +211,23 @@ const QuizOffer = () => {
             </div>
 
             {/* Price */}
-            <p className="text-muted-foreground text-sm line-through italic">TUDO ISSO DE R$109,00</p>
-            <p className="text-xs text-muted-foreground font-semibold">POR APENAS</p>
-            <p className="text-6xl font-extrabold text-green-500 my-1">R$ 27</p>
-            <p className="text-xs text-muted-foreground mb-5">Ou 6x de R$5,32</p>
+            <p className="text-muted-foreground text-sm line-through italic">TODO ESTO DE $47,00 USD</p>
+            <p className="text-xs text-muted-foreground font-semibold">POR SOLO</p>
+            <p className="text-6xl font-extrabold text-green-500 my-1">$ 12,90</p>
+            <p className="text-xs text-muted-foreground mb-5">O 3x de $4,30</p>
             <CTA />
           </div>
         </div>
 
         {/* Guarantee */}
         <div className="w-full border-2 border-yellow-400 rounded-2xl p-6 flex flex-col items-center">
-          <img src={garantia} alt="Garantia 30 dias" className="w-24 mb-3" loading="lazy" decoding="async" />
-          <h2 className="font-bold text-foreground text-base mb-2">Garantia de Reembolso</h2>
+          <img src={garantia} alt="Garantía 30 días" className="w-24 mb-3" loading="lazy" decoding="async" />
+          <h2 className="font-bold text-foreground text-base mb-2">Garantía de Reembolso</h2>
           <p className="text-xs text-muted-foreground text-center mb-2">
-            Todo produto é obrigado a dar no mínimo 7 dias de garantia, porém confiamos tanto na fórmula que oferecemos 30 dias corridos.
+            Todo producto está obligado a ofrecer al menos 7 días de garantía, pero confiamos tanto en la fórmula que ofrecemos 30 días corridos.
           </p>
           <p className="text-xs text-muted-foreground text-center">
-            Ou seja, se você não gostar ou não funcionar pra você, nós reembolsaremos cada centavo que você pagou, sem questionar.
+            Es decir, si no te gusta o no funciona para ti, te reembolsaremos cada centavo que pagaste, sin preguntas.
           </p>
         </div>
 
@@ -220,7 +236,7 @@ const QuizOffer = () => {
         {/* FAQ */}
         <div className="w-full">
           <h2 className="text-base font-bold text-foreground mb-4 flex items-center gap-2">
-            ❓ Perguntas Frequentes
+            ❓ Preguntas Frecuentes
           </h2>
           <div className="flex flex-col gap-2">
             {faqs.map((faq, i) => (
@@ -247,7 +263,7 @@ const QuizOffer = () => {
         <CTA />
 
         <p className="text-[10px] text-muted-foreground text-center">
-          🔒 Compra 100% segura • Garantia de 30 dias
+          🔒 Compra 100% segura • Garantía de 30 días
         </p>
       </div>
     </div>

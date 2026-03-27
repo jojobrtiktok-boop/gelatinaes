@@ -3,17 +3,16 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import QuizLayout from "@/components/QuizLayout";
 
-// Add the woman body image to src/assets/ as "mulher-areas.png"
-// import mulherAreas from "@/assets/mulher-areas.png";
+import mulherAreas from "@/assets/mulher-areas.png";
 
 const areaOptions = [
   { label: "Papada", emoji: "😋" },
-  { label: "Braços", emoji: "💪" },
+  { label: "Brazos", emoji: "💪" },
   { label: "Barriga", emoji: "🍩" },
   { label: "Cintura", emoji: "⌛" },
   { label: "Glúteos", emoji: "🍑" },
-  { label: "Coxas", emoji: "🦵" },
-  { label: "Corpo Todo", emoji: "✨" },
+  { label: "Muslos", emoji: "🦵" },
+  { label: "Cuerpo Entero", emoji: "✨" },
 ];
 
 const QuizAreas = () => {
@@ -29,18 +28,17 @@ const QuizAreas = () => {
   return (
     <QuizLayout progress={35}>
       <h1 className="text-xl font-bold text-foreground mb-1 leading-tight text-center">
-        Quais as áreas que você{" "}
-        <span className="text-primary">mais quer perder gordura?</span>
+        ¿En qué zonas{" "}
+        <span className="text-primary">quieres perder más grasa?</span>
       </h1>
       <p className="text-muted-foreground text-sm mb-6 text-center">
-        Toque nas áreas desejadas.
+        Toca las zonas deseadas.
       </p>
 
       <div className="w-full flex gap-3 mb-8">
         {/* Woman body image */}
         <div className="w-28 shrink-0 rounded-xl overflow-hidden bg-secondary/40 flex items-center justify-center self-stretch">
-          {/* Replace the div below with: <img src={mulherAreas} alt="Corpo" className="w-full h-full object-cover object-top" /> */}
-          <span className="text-4xl">🧍‍♀️</span>
+            <img src={mulherAreas} alt="Cuerpo" className="w-full h-full object-cover object-top" />
         </div>
 
         {/* Options list */}

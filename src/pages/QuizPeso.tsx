@@ -14,10 +14,10 @@ const QuizPeso = () => {
   return (
     <QuizLayout progress={94}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
-        Qual é seu peso atual?
+        ¿Cuál es tu peso actual?
       </h1>
       <p className="text-muted-foreground text-sm mb-10 text-center">
-        Seja sincera para um resultado preciso
+        Sé sincera para un resultado preciso
       </p>
 
       {/* Weight display */}

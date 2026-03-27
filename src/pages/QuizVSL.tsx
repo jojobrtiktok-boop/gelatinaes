@@ -2,19 +2,37 @@ import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import QuizLayout from "@/components/QuizLayout";
 
-const NEXT_ROUTE = "/quiz/26";
+const NEXT_ROUTE = "/quiz/24";
 const PLAYER_ID = "69c46061f5a026a3bac3dd4e";
 const PLAYER_URL = `https://scripts.converteai.net/5f516cb5-1331-4896-8140-9224d21bc287/players/${PLAYER_ID}/v4/embed.html`;
+const UNLOCK_DURATION_MS = 30_000; // 30 segundos
 
 const QuizVSL = () => {
   const navigate = useNavigate();
-  const [videoProgress, setVideoProgress] = useState(0);
-  const [isVideoUnlocked, setIsVideoUnlocked] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const userName = localStorage.getItem("userName") || "você";
+  const [progress, setProgress] = useState(0);
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const startedRef = useRef(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startTimer = () => {
+    if (startedRef.current) return;
+    startedRef.current = true;
+    const startTime = Date.now();
+
+    intervalRef.current = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const pct = Math.min((elapsed / UNLOCK_DURATION_MS) * 100, 100);
+      setProgress(pct);
+      if (pct >= 100) {
+        clearInterval(intervalRef.current!);
+        setIsUnlocked(true);
+      }
+    }, 300);
+  };
 
   useEffect(() => {
-    // Inject Vturb SDK script once
+    // Inject Vturb SDK once
     if (!document.getElementById("vturb-sdk-v4")) {
       const s = document.createElement("script");
       s.id = "vturb-sdk-v4";
@@ -23,59 +41,63 @@ const QuizVSL = () => {
       document.head.appendChild(s);
     }
 
-    // Set iframe src (lazy load, same as original embed)
     const iframe = iframeRef.current;
     if (iframe) {
       const search = location.search || "?";
       iframe.src = `${PLAYER_URL}${search}&vl=${encodeURIComponent(location.href)}`;
     }
 
-    // Listen for postMessage events from Vturb player
     const handleMessage = (event: MessageEvent) => {
       const d = event.data;
       if (!d || typeof d !== "object") return;
 
-      // Vturb fires events with playerid or id matching the player
       const isOurPlayer =
-        d.playerid === PLAYER_ID || d.id === PLAYER_ID || d.playerId === PLAYER_ID;
+        d.playerid === PLAYER_ID ||
+        d.id === PLAYER_ID ||
+        d.playerId === PLAYER_ID ||
+        d.videoId === PLAYER_ID;
 
       if (!isOurPlayer) return;
 
-      const type = d.type || d.event || "";
+      const type = String(d.type || d.event || "").toLowerCase();
 
-      if (type === "timeupdate" || type === "smartplayer:timeupdate") {
+      // Start on any play or timeupdate event (first non-zero currentTime)
+      if (
+        type.includes("play") ||
+        type.includes("timeupdate") ||
+        type.includes("start")
+      ) {
         const cur = d.currentTime ?? d.time ?? 0;
-        const dur = d.duration ?? 1;
-        if (dur > 0) {
-          const pct = Math.min((cur / dur) * 100, 100);
-          setVideoProgress(pct);
-          if (pct >= 99) setIsVideoUnlocked(true);
-        }
+        if (type.includes("timeupdate") && cur < 0.5) return; // ignore very start
+        startTimer();
       }
 
-      if (type === "ended" || type === "smartplayer:ended") {
-        setIsVideoUnlocked(true);
-        setVideoProgress(100);
+      if (type.includes("ended")) {
+        startTimer();
+        setIsUnlocked(true);
+        setProgress(100);
       }
     };
 
     window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
+    return () => {
+      window.removeEventListener("message", handleMessage);
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   }, []);
 
   return (
     <QuizLayout progress={100}>
-      {/* Header */}
       <h1 className="text-lg font-bold text-foreground mb-4 text-center leading-tight">
-        Assista à explicação rápida de{" "}
+        Mira la explicación rápida de{" "}
         <span className="text-primary">1 Minuto</span> 👀
       </h1>
 
       {/* Vturb Portrait Player */}
       <div
         id={`ifr_${PLAYER_ID}_wrapper`}
-        className="w-full mb-4"
-        style={{ maxWidth: "400px", margin: "0 auto 16px" }}
+        className="w-full mb-3"
+        style={{ maxWidth: "280px", margin: "0 auto 12px" }}
       >
         <div
           id={`ifr_${PLAYER_ID}_aspect`}
@@ -94,24 +116,32 @@ const QuizVSL = () => {
       </div>
 
       {/* Lock bar / CTA */}
-      {!isVideoUnlocked ? (
-        <div className="w-full rounded-2xl border border-border bg-background p-4 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2 flex-1 min-w-0">
-            <span className="text-xl">🔒</span>
-            <span className="text-sm font-medium text-foreground truncate">
-              Assista para continuar...
+      {!isUnlocked ? (
+        <div className="w-full rounded-2xl border border-border bg-background px-4 pt-4 pb-3">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <span className="text-xl">🔒</span>
+              <span className="text-sm font-medium text-foreground">
+                Mira el video para continuar...
+              </span>
+            </div>
+            <span className="text-sm font-bold text-primary">
+              {Math.round(progress)}%
             </span>
           </div>
-          <span className="text-sm font-bold text-primary shrink-0">
-            {Math.round(videoProgress)}%
-          </span>
+          <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] rounded-full transition-all duration-300"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
         </div>
       ) : (
         <button
           onClick={() => navigate(NEXT_ROUTE)}
-          className="w-full text-base font-bold py-5 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] text-white uppercase tracking-wide shadow-lg animate-soft-bounce"
+          className="w-full text-base font-bold py-5 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] text-white uppercase tracking-wide shadow-lg animate-pulse"
         >
-          Pegar meu Protocolo ✅
+          Continuar ✅
         </button>
       )}
     </QuizLayout>

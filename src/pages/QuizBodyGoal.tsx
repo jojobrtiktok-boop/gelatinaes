@@ -3,13 +3,13 @@ import QuizSingleSelect from "@/components/QuizSingleSelect";
 const QuizBodyGoal = () => (
   <QuizSingleSelect
     progress={100}
-    title="Qual o corpo dos seus sonhos?"
-    subtitle="Escolha sua meta."
+    title="¿Cuál es el cuerpo de tus sueños?"
+    subtitle="Elige tu meta."
     options={[
-      { label: "Em forma e definida", emoji: "🐻" },
-      { label: "Natural e saudável", emoji: "🌿" },
+      { label: "En forma y definida", emoji: "🐻" },
+      { label: "Natural y saludable", emoji: "🌿" },
     ]}
-    nextRoute="/quiz/27"
+    nextRoute="/quiz/25"
   />
 );
 

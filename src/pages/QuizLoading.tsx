@@ -1,17 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import QuizLayout from "@/components/QuizLayout";
+import loadingGelatina from "@/assets/loading-gelatina-plano.png";
 
 const steps = [
-  { num: 1, title: "Prepare a gelatina", desc: "Receita simples do app", emoji: "🍯" },
-  { num: 2, title: "Consuma 2x ao dia", desc: "Manhã e antes de dormir", emoji: "⏰" },
-  { num: 3, title: "Siga por 30 dias", desc: "Protocolo completo", emoji: "📋" },
+  { num: 1, title: "Prepara la gelatina", desc: "Receta simple del app", emoji: "🍯" },
+  { num: 2, title: "Consúmela 2x al día", desc: "Mañana y antes de dormir", emoji: "⏰" },
+  { num: 3, title: "Síguela por 30 días", desc: "Protocolo completo", emoji: "📋" },
 ];
 
 const schedule = [
-  { label: "Manhã", desc: "Em jejum", emoji: "☀️" },
-  { label: "Dia", desc: "Sem fome", emoji: "⚡" },
-  { label: "Noite", desc: "Antes de dormir", emoji: "🌙" },
+  { label: "Mañana", desc: "En ayunas", emoji: "☀️" },
+  { label: "Día", desc: "Sin hambre", emoji: "⚡" },
+  { label: "Noche", desc: "Antes de dormir", emoji: "🌙" },
 ];
 
 const QuizLoading = () => {
@@ -20,19 +21,13 @@ const QuizLoading = () => {
   return (
     <QuizLayout progress={100}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
-        Como usar a <span className="text-primary">Gelatina Mounjaro</span>
+        Cómo usar la <span className="text-primary">Gelatina Mounjaro</span>
       </h1>
-      <p className="text-muted-foreground text-sm mb-8 text-center">Simples, prático e eficaz</p>
+      <p className="text-muted-foreground text-sm mb-8 text-center">Simple, práctico y eficaz</p>
 
-      {/* Gelatin → Checklist image */}
-      <div className="w-full flex items-center justify-center gap-4 mb-8">
-        <div className="w-20 h-20 bg-pink-100 rounded-lg flex items-center justify-center flex-shrink-0">
-          <span className="text-4xl">🍮</span>
-        </div>
-        <span className="text-2xl">→</span>
-        <div className="w-20 h-20 bg-yellow-50 rounded-lg flex items-center justify-center flex-shrink-0">
-          <span className="text-3xl">✅</span>
-        </div>
+      {/* Gelatin → Plan image */}
+      <div className="w-full mb-8 rounded-2xl overflow-hidden">
+        <img src={loadingGelatina} alt="Gelatina Mounjaro plano" className="w-full object-contain" />
       </div>
 
       {/* Steps */}
@@ -67,7 +62,7 @@ const QuizLoading = () => {
         className="w-full text-base font-semibold py-6 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] hover:opacity-90 transition-opacity"
         onClick={() => navigate("/quiz/21")}
       >
-        ✅ Sim, eu me comprometo!
+        ✅ ¡Sí, me comprometo!
       </Button>
     </QuizLayout>
   );

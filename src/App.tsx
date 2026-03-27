@@ -37,7 +37,6 @@ import QuizMetaKg from "./pages/QuizMetaKg";
 import QuizOffer from "./pages/QuizOffer";
 
 import NotFound from "./pages/NotFound";
-import DevNav from "./components/DevNav";
 
 const queryClient = new QueryClient();
 
@@ -73,18 +72,17 @@ const App = () => (
           <Route path="/quiz/21" element={<QuizCorpoSonhos />} />
           <Route path="/quiz/22" element={<QuizTransformacao />} />
           <Route path="/quiz/23" element={<QuizVSL />} />
-          <Route path="/quiz/24" element={<QuizLoadingFinal />} />
-          <Route path="/quiz/25" element={<QuizVSL2 />} />
-          <Route path="/quiz/29" element={<QuizHistorias />} />
-          <Route path="/quiz/30" element={<QuizTransformacao2 />} />
-          <Route path="/quiz/26" element={<QuizBodyGoal />} />
-          <Route path="/quiz/27" element={<QuizMetaKg />} />
-          <Route path="/quiz/28" element={<QuizOffer />} />
+          <Route path="/quiz/24" element={<QuizBodyGoal />} />
+          <Route path="/quiz/25" element={<QuizMetaKg />} />
+          <Route path="/quiz/26" element={<QuizHistorias />} />
+          <Route path="/quiz/27" element={<QuizTransformacao2 />} />
+          <Route path="/quiz/28" element={<QuizVSL2 />} />
+          <Route path="/quiz/29" element={<QuizLoadingFinal />} />
+          <Route path="/quiz/30" element={<QuizOffer />} />
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <DevNav />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

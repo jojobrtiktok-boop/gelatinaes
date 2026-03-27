@@ -7,9 +7,9 @@ import { useState } from "react";
 import QuizLayout from "@/components/QuizLayout";
 
 const bodyOptions = [
-  { label: "Médio", image: bodyMedio },
+  { label: "Promedio", image: bodyMedio },
   { label: "Plus Size", image: bodyPlussize },
-  { label: "Acima do peso", image: bodyAcimapeso },
+  { label: "Por encima del peso", image: bodyAcimapeso },
   { label: "Sobrepeso", image: bodySobrepeso },
 ];
 
@@ -25,9 +25,9 @@ const QuizBody = () => {
   return (
     <QuizLayout progress={25}>
       <h1 className="text-xl font-bold text-foreground mb-1 leading-tight text-center">
-        Como você classifica <span className="text-primary">o seu corpo</span>?
+        ¿Cómo clasificas <span className="text-primary">tu cuerpo</span>?
       </h1>
-      <p className="text-muted-foreground text-sm mb-6 text-center">Selecione a opção que melhor te descreve</p>
+      <p className="text-muted-foreground text-sm mb-6 text-center">Selecciona la opción que mejor te describe</p>
 
       <div className="w-full grid grid-cols-2 gap-3">
         {bodyOptions.map((opt) => (

@@ -4,7 +4,7 @@ import QuizLayout from "@/components/QuizLayout";
 
 const QuizGestacoes = () => {
   const navigate = useNavigate();
-  const userName = localStorage.getItem("userName") || "você";
+  const userName = localStorage.getItem("userName") || "tú";
   const pesoAtual = Number(localStorage.getItem("quiz_peso_atual") || "75");
   const pesoDesejado = Number(localStorage.getItem("quiz_peso_desejado") || "65");
   const meta = pesoAtual - pesoDesejado;
@@ -32,13 +32,13 @@ const QuizGestacoes = () => {
       {/* Message card */}
       <div className="w-full rounded-2xl bg-purple-50 border border-purple-200 p-6 mb-8">
         <h1 className="text-lg font-bold text-foreground mb-2 text-center">
-          Esse é um ótimo objetivo, <span className="text-primary">{userName}</span>! ❤️
+          ¡Este es un gran objetivo, <span className="text-primary">{userName}</span>! ❤️
         </h1>
         <p className="text-primary font-semibold text-sm text-center mb-3">
           Meta: {pesoAtual}kg → {pesoDesejado}kg ({meta}kg)
         </p>
         <p className="text-muted-foreground text-sm text-center leading-relaxed">
-          Agora vamos ajustar o próximo passo para você começar a perceber diferença <strong>já nos primeiros dias.</strong>
+          Ahora vamos a ajustar el siguiente paso para que empieces a notar la diferencia <strong>desde los primeros días.</strong>
         </p>
       </div>
 
@@ -47,7 +47,7 @@ const QuizGestacoes = () => {
         className="w-full text-base font-semibold py-6 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] hover:opacity-90 transition-opacity"
         onClick={() => navigate("/quiz/15")}
       >
-        Ok, Vamos lá! 🚀
+        ¡Ok, vamos! 🚀
       </Button>
     </QuizLayout>
   );

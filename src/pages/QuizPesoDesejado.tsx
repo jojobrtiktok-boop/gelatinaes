@@ -20,10 +20,10 @@ const QuizPesoDesejado = () => {
   return (
     <QuizLayout progress={98}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
-        Qual é seu peso desejado?
+        ¿Cuál es tu peso deseado?
       </h1>
       <p className="text-muted-foreground text-sm mb-10 text-center">
-        Qual o peso que você sonha alcançar?
+        ¿Cuál es el peso que sueñas alcanzar?
       </p>
 
       <div className="flex items-baseline justify-center mb-6">

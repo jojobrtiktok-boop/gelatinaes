@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import QuizLayout from "@/components/QuizLayout";
 
 const rotinas = [
-  { label: "Trabalho fora de casa", emoji: "💼" },
-  { label: "Trabalho em home office", emoji: "🏠" },
-  { label: "Cuido da casa/família", emoji: "👨‍👩‍👧‍👦" },
-  { label: "Estudo", emoji: "📚" },
+  { label: "Trabajo fuera de casa", emoji: "💼" },
+  { label: "Trabajo desde casa", emoji: "🏠" },
+  { label: "Cuido del hogar/familia", emoji: "👨‍👩‍👧‍👦" },
+  { label: "Estudio", emoji: "📚" },
 ];
 
 const QuizSono = () => {
@@ -28,10 +28,10 @@ const QuizSono = () => {
   return (
     <QuizLayout progress={82}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center leading-tight">
-        Como é sua <span className="text-primary">rotina diária</span>?
+        ¿Cómo es tu <span className="text-primary">rutina diaria</span>?
       </h1>
       <p className="text-muted-foreground text-sm mb-6 text-center">
-        Selecione todas as que se encaixam.
+        Selecciona todas las que apliquen.
       </p>
 
       <div className="w-full flex flex-col gap-3 mb-8">

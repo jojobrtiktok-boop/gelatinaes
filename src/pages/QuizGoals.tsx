@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button";
 import QuizLayout from "@/components/QuizLayout";
 
 const options = [
-  { label: "Ter mais energia", emoji: "⚡" },
-  { label: "Usar roupas que amo", emoji: "👗" },
-  { label: "Melhorar autoestima", emoji: "❤️" },
-  { label: "Ter mais saúde", emoji: "💪" },
-  { label: "Me sentir mais leve", emoji: "🦋" },
-  { label: "Receber elogios", emoji: "⭐" },
+  { label: "Tener más energía", emoji: "⚡" },
+  { label: "Usar ropa que amo", emoji: "👗" },
+  { label: "Mejorar autoestima", emoji: "❤️" },
+  { label: "Tener más salud", emoji: "💪" },
+  { label: "Sentirme más ligera", emoji: "🦋" },
+  { label: "Recibir elogios", emoji: "⭐" },
 ];
 
 const QuizGoals = () => {
@@ -30,10 +30,10 @@ const QuizGoals = () => {
   return (
     <QuizLayout progress={90}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
-        O que você quer conquistar?
+        ¿Qué quieres lograr?
       </h1>
       <p className="text-muted-foreground text-sm mb-6 text-center">
-        Selecione seus maiores objetivos
+        Selecciona tus mayores objetivos
       </p>
 
       <div className="w-full grid grid-cols-2 gap-3 mb-8">

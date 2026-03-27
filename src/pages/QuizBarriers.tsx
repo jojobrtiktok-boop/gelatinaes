@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import QuizLayout from "@/components/QuizLayout";
 
 const options = [
-  { label: "Falta de tempo", emoji: "⏰" },
-  { label: "Falta de autocontrole", emoji: "🍔" },
-  { label: "Questões financeiras", emoji: "💰" },
-  { label: "Falta de constância", emoji: "📋" },
+  { label: "Falta de tiempo", emoji: "⏰" },
+  { label: "Falta de autocontrol", emoji: "🍔" },
+  { label: "Problemas económicos", emoji: "💰" },
+  { label: "Falta de constancia", emoji: "📋" },
 ];
 
 const QuizBarriers = () => {
@@ -28,10 +28,10 @@ const QuizBarriers = () => {
   return (
     <QuizLayout progress={80}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
-        O que te impede de emagrecer?
+        ¿Qué te impide adelgazar?
       </h1>
       <p className="text-muted-foreground text-sm mb-6 text-center">
-        Selecione todas as barreiras que você enfrenta
+        Selecciona todas las barreras que enfrentas
       </p>
 
       <div className="w-full flex flex-col gap-3 mb-8">

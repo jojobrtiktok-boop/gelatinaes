@@ -41,7 +41,7 @@ const QuizLayout = ({ progress, children, showLogo = true }: QuizLayoutProps) =>
           <img
             src={logoMounjaro}
             alt="Mounjaro Gelatina"
-            className="w-28 mb-6 shrink-0"
+            className="w-40 mb-6 shrink-0"
             loading="eager"
             decoding="async"
           />

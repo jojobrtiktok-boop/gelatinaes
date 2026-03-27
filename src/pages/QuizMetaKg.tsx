@@ -4,7 +4,7 @@ import QuizLayout from "@/components/QuizLayout";
 
 const QuizMetaKg = () => {
   const navigate = useNavigate();
-  const userName = localStorage.getItem("userName") || "você";
+  const userName = localStorage.getItem("userName") || "tú";
   const pesoAtual = Number(localStorage.getItem("quiz_peso_atual") || "75");
   const pesoDesejado = Number(localStorage.getItem("quiz_peso_desejado") || String(pesoAtual - 10));
   const meta = Math.max(3, pesoAtual - pesoDesejado);
@@ -17,21 +17,21 @@ const QuizMetaKg = () => {
         <span className="text-6xl mb-6">🎯</span>
 
         <h1 className="text-xl font-bold text-foreground mb-4 leading-tight">
-          <span className="text-primary">{userName}</span>, você gostaria de perder entre{" "}
-          <span className="text-primary">{lower}</span> e{" "}
-          <span className="text-primary">{upper} kilos</span> em poucas semanas?
+          <span className="text-primary">{userName}</span>, ¿te gustaría perder entre{" "}
+          <span className="text-primary">{lower}</span> y{" "}
+          <span className="text-primary">{upper} kilos</span> en pocas semanas?
         </h1>
 
         <p className="text-muted-foreground text-sm mb-10">
-          Baseado no seu perfil, esse resultado é totalmente alcançável com a Gelatina Mounjaro!
+          ¡Basado en tu perfil, ese resultado es totalmente alcanzable con la Gelatina Mounjaro!
         </p>
 
         <Button
           size="lg"
           className="w-full text-base font-semibold py-6 rounded-full bg-green-500 hover:bg-green-600 text-white transition-colors"
-          onClick={() => navigate("/quiz/29")}
+          onClick={() => navigate("/quiz/26")}
         >
-          SIM! Quero muito começar! 🔥
+          ¡SÍ! ¡Quiero empezar ya! 🔥
         </Button>
       </div>
     </QuizLayout>

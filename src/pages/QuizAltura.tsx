@@ -14,10 +14,10 @@ const QuizAltura = () => {
   return (
     <QuizLayout progress={96}>
       <h1 className="text-xl font-bold text-foreground mb-2 text-center">
-        Qual é sua altura?
+        ¿Cuál es tu altura?
       </h1>
       <p className="text-muted-foreground text-sm mb-10 text-center">
-        Precisamos disso para calcular seu IMC
+        Necesitamos esto para calcular tu IMC
       </p>
 
       {/* Height display */}

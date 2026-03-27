@@ -3,10 +3,10 @@ import { useState } from "react";
 import QuizLayout from "@/components/QuizLayout";
 
 const ageOptions = [
-  { label: "18 - 27 anos", emoji: "🌸" },
-  { label: "28 - 39 anos", emoji: "🌼" },
-  { label: "40 - 54 anos", emoji: "🌺" },
-  { label: "54+ anos", emoji: "🌷" },
+  { label: "18 - 27 años", emoji: "🌸" },
+  { label: "28 - 39 años", emoji: "🌼" },
+  { label: "40 - 54 años", emoji: "🌺" },
+  { label: "54+ años", emoji: "🌷" },
 ];
 
 const QuizAge = () => {
@@ -20,8 +20,8 @@ const QuizAge = () => {
 
   return (
     <QuizLayout progress={15}>
-      <h1 className="text-xl font-bold text-foreground mb-2 text-center">Qual a sua idade?</h1>
-      <p className="text-muted-foreground text-sm mb-6 text-center">Selecione sua faixa etária.</p>
+      <h1 className="text-xl font-bold text-foreground mb-2 text-center">¿Cuál es tu edad?</h1>
+      <p className="text-muted-foreground text-sm mb-6 text-center">Selecciona tu rango de edad.</p>
 
       <div className="w-full flex flex-col gap-3">
         {ageOptions.map((opt) => (

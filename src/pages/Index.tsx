@@ -1,5 +1,5 @@
 import logoMounjaro from "@/assets/logo-mounjaro.png";
-import gelatinaBowl from "@/assets/gelatina-bowl.png";
+import heroInicio from "@/assets/hero-inicio.png";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
@@ -12,17 +12,17 @@ const Index = () => {
         <img
           src={logoMounjaro}
           alt="Mounjaro Gelatina"
-          className="w-40 mb-8"
+          className="w-64 mb-8"
           loading="eager"
           decoding="async"
         />
 
-        {/* Product Image */}
-        <div className="bg-secondary/50 rounded-2xl p-4 mb-8 w-48 h-48 flex items-center justify-center">
+        {/* Hero Image */}
+        <div className="w-full mb-6 rounded-2xl overflow-hidden">
           <img
-            src={gelatinaBowl}
+            src={heroInicio}
             alt="Gelatina Mounjaro"
-            className="w-36 h-36 object-contain"
+            className="w-full object-contain"
             loading="eager"
             decoding="async"
           />
@@ -33,13 +33,13 @@ const Index = () => {
           Gelatina Mounjaro
         </h1>
         <p className="text-primary font-semibold text-lg mb-4 text-center">
-          Para perder até 12 kg em 30 dias!
+          ¡Para perder hasta 12 kg en 30 días!
         </p>
 
         {/* Subheadline */}
         <p className="text-muted-foreground mb-8 text-sm leading-relaxed">
-          Descubra como ativar seu metabolismo e perder até{" "}
-          <strong className="text-foreground">12kg em 30 dias</strong> com a{" "}
+          Descubre cómo activar tu metabolismo y perder hasta{" "}
+          <strong className="text-foreground">12 kg en 30 días</strong> con la{" "}
           <strong className="text-foreground">Gelatina Mounjaro</strong>!
         </p>
 
@@ -49,17 +49,17 @@ const Index = () => {
           className="w-full text-base font-semibold py-6 rounded-full bg-green-600 hover:bg-green-700 transition-colors text-white"
           onClick={() => navigate("/quiz")}
         >
-          Quero saber se funciona para mim! 🍒
+          ¡Quiero saber si funciona para mí! 🍒
         </Button>
 
         {/* Limited Spots */}
         <p className="text-xs text-muted-foreground mt-4 mb-6 font-medium">
-          Aproveite as vagas são limitadas.
+          Aprovecha, los cupos son limitados.
         </p>
 
         {/* Social Proof */}
         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-          <span>✓ 127.000+ mulheres</span>
+          <span>✓ 127.000+ mujeres</span>
           <span>·</span>
           <span>✓ 100% Natural</span>
         </div>
