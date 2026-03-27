@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import QuizLayout from "@/components/QuizLayout";
+import logoMounjaro from "@/assets/logo-mounjaro.png";
 
 const NEXT_ROUTE = "/quiz/24";
 const PLAYER_ID = "69c46061f5a026a3bac3dd4e";
@@ -87,64 +87,84 @@ const QuizVSL = () => {
   }, []);
 
   return (
-    <QuizLayout progress={100}>
-      <h1 className="text-sm font-bold text-foreground mb-2 text-center leading-tight">
-        Mira la explicación rápida de{" "}
-        <span className="text-primary">1 Minuto</span> 👀
-      </h1>
-
-      {/* Vturb Portrait Player */}
-      <div
-        id={`ifr_${PLAYER_ID}_wrapper`}
-        className="w-full"
-        style={{ maxWidth: "220px", margin: "0 auto 0" }}
-      >
+    <div className="w-full h-screen flex flex-col bg-background">
+      {/* Progress bar */}
+      <div className="w-full h-1.5 bg-muted shrink-0">
         <div
-          id={`ifr_${PLAYER_ID}_aspect`}
-          style={{ position: "relative", paddingBottom: "177.64%", paddingTop: 0 }}
-        >
-          <iframe
-            ref={iframeRef}
-            id={`ifr_${PLAYER_ID}`}
-            frameBorder={0}
-            allowFullScreen
-            allow="autoplay; fullscreen"
-            referrerPolicy="origin"
-            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-          />
-        </div>
+          className="h-full bg-primary rounded-r-full"
+          style={{ width: "100%" }}
+        />
       </div>
 
-      {/* Lock bar / CTA */}
-      {!isUnlocked ? (
-        <div className="w-full max-w-xs mx-auto rounded-2xl border border-border bg-background px-4 py-3 mt-2">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <span className="text-lg">🔒</span>
-              <span className="text-xs font-medium text-foreground">
-                Mira el video para continuar...
-              </span>
-            </div>
-            <span className="text-xs font-bold text-primary">
-              {Math.round(progress)}%
-            </span>
-          </div>
-          <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
-            <div
-              className="h-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] rounded-full transition-all duration-300"
-              style={{ width: `${progress}%` }}
+      {/* Logo compact */}
+      <div className="flex items-center justify-center pt-2 pb-1">
+        <img
+          src={logoMounjaro}
+          alt="Mounjaro"
+          className="w-32"
+          loading="eager"
+        />
+      </div>
+
+      {/* Vturb Portrait Player - takes most space */}
+      <div className="flex-1 flex flex-col items-center justify-center px-4">
+        <h1 className="text-xs font-bold text-foreground mb-1 text-center">
+          Mira la explicación
+        </h1>
+        <div
+          id={`ifr_${PLAYER_ID}_wrapper`}
+          className="w-full flex-1"
+          style={{ maxWidth: "200px", margin: "0 auto" }}
+        >
+          <div
+            id={`ifr_${PLAYER_ID}_aspect`}
+            style={{ position: "relative", paddingBottom: "177.64%", paddingTop: 0 }}
+          >
+            <iframe
+              ref={iframeRef}
+              id={`ifr_${PLAYER_ID}`}
+              frameBorder={0}
+              allowFullScreen
+              allow="autoplay; fullscreen"
+              referrerPolicy="origin"
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
             />
           </div>
         </div>
-      ) : (
-        <button
-          onClick={() => navigate(NEXT_ROUTE)}
-          className="w-full max-w-xs mx-auto block text-sm font-bold py-4 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] text-white uppercase tracking-wide shadow-lg animate-pulse mt-2"
-        >
-          Continuar ✅
-        </button>
-      )}
-    </QuizLayout>
+      </div>
+
+      {/* Lock bar / CTA at bottom */}
+      <div className="w-full px-4 pb-4 shrink-0">
+        {!isUnlocked ? (
+          <div className="w-full rounded-xl border border-border bg-background px-3 py-2">
+            <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center gap-1.5">
+                <span className="text-base">🔒</span>
+                <span className="text-xs font-medium text-foreground">
+                  Mira para continuar...
+                </span>
+              </div>
+              <span className="text-xs font-bold text-primary">
+                {Math.round(progress)}%
+              </span>
+            </div>
+            <div className="w-full h-1 bg-muted rounded-full overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] rounded-full transition-all duration-300"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
+        ) : (
+          <button
+            onClick={() => navigate(NEXT_ROUTE)}
+            className="w-full text-xs font-bold py-3 rounded-xl bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] text-white uppercase tracking-wide shadow-lg animate-pulse"
+          >
+            Continuar ✅
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 

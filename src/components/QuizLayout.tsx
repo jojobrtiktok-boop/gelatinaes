@@ -6,9 +6,10 @@ interface QuizLayoutProps {
   progress: number;
   children: React.ReactNode;
   showLogo?: boolean;
+  compact?: boolean;
 }
 
-const QuizLayout = ({ progress, children, showLogo = true }: QuizLayoutProps) => {
+const QuizLayout = ({ progress, children, showLogo = true, compact = false }: QuizLayoutProps) => {
   const location = useLocation();
   const [visible, setVisible] = useState(false);
 
@@ -33,15 +34,15 @@ const QuizLayout = ({ progress, children, showLogo = true }: QuizLayoutProps) =>
       </div>
 
       <div
-        className={`flex-1 flex flex-col items-center w-full max-w-md mx-auto px-6 py-8 transition-all duration-300 ease-out ${
-          visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-[60px]"
-        }`}
+        className={`flex-1 flex flex-col items-center w-full max-w-md mx-auto px-6 transition-all duration-300 ease-out ${
+          compact ? "py-2" : "py-8"
+        } ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-[60px]"}`}
       >
         {showLogo && (
           <img
             src={logoMounjaro}
             alt="Mounjaro Gelatina"
-            className="w-40 mb-6 shrink-0"
+            className={`w-40 shrink-0 ${compact ? "mb-2" : "mb-6"}`}
             loading="eager"
             decoding="async"
           />
