@@ -87,7 +87,7 @@ const QuizVSL2 = () => {
 
   return (
     <QuizLayout progress={100}>
-      <h1 className="text-lg font-bold text-foreground mb-4 text-center leading-tight">
+      <h1 className="text-sm font-bold text-foreground mb-2 text-center leading-tight">
         <span className="text-primary">{userName}</span>, ¡tu protocolo está{" "}
         <span className="text-primary">listo!</span> 🎉
       </h1>
@@ -95,8 +95,8 @@ const QuizVSL2 = () => {
       {/* Vturb Portrait Player */}
       <div
         id={`ifr_${PLAYER_ID}_wrapper`}
-        className="w-full mb-3"
-        style={{ maxWidth: "280px", margin: "0 auto 12px" }}
+        className="w-full"
+        style={{ maxWidth: "220px", margin: "0 auto 0" }}
       >
         <div
           id={`ifr_${PLAYER_ID}_aspect`}
@@ -115,15 +115,15 @@ const QuizVSL2 = () => {
       </div>
 
       {!isUnlocked ? (
-        <div className="w-full rounded-2xl border border-border bg-background px-4 pt-4 pb-3">
+        <div className="w-full max-w-xs mx-auto rounded-2xl border border-border bg-background px-4 py-3 mt-2">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
-              <span className="text-xl">🔒</span>
-              <span className="text-sm font-medium text-foreground">
+              <span className="text-lg">🔒</span>
+              <span className="text-xs font-medium text-foreground">
                 Mira el video para continuar...
               </span>
             </div>
-            <span className="text-sm font-bold text-primary">
+            <span className="text-xs font-bold text-primary">
               {Math.round(progress)}%
             </span>
           </div>
@@ -137,7 +137,7 @@ const QuizVSL2 = () => {
       ) : (
         <button
           onClick={() => navigate(NEXT_ROUTE)}
-          className="w-full text-base font-bold py-5 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] text-white uppercase tracking-wide shadow-lg animate-pulse"
+          className="w-full max-w-xs mx-auto block text-sm font-bold py-4 rounded-full bg-gradient-to-r from-primary to-[hsl(270,80%,60%)] text-white uppercase tracking-wide shadow-lg animate-pulse mt-2"
         >
           Continuar ✅
         </button>
