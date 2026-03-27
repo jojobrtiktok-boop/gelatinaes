@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import QuizLayout from "@/components/QuizLayout";
-import transfGiovanna from "@/assets/transf-giovanna.png";
+import famosaMateria from "@/assets/famosa-materia.png";
 
 const QuizFamosas = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const QuizFamosas = () => {
       {/* Before/After image - simple and clean */}
       <div className="w-full rounded-2xl overflow-hidden mb-6">
         <img
-          src={transfGiovanna}
+          src={famosaMateria}
           alt="Transformación antes y después"
           className="w-full object-cover"
           loading="eager"
